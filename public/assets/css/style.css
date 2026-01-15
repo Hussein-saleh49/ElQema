@@ -1,0 +1,2804 @@
+/* =========================
+   RTL / LTR Direction
+========================= */
+
+/* الافتراضي: LTR */
+body[dir="ltr"] {
+    direction: ltr;
+    text-align: left;
+}
+
+/* للعربية: RTL */
+body[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Navbar */
+body[dir="rtl"] .navbar-nav.ms-auto {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+body[dir="ltr"] .navbar-nav.ms-auto {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+/* أي عناصر تتحرك أفقياً أو تحتاج قلب الاتجاه */
+body[dir="rtl"] .experience-box,
+body[dir="rtl"] .screen-1,
+body[dir="rtl"] .screen-2,
+body[dir="rtl"] .screen-3,
+body[dir="rtl"] .demo-btn {
+    left: auto !important;
+    right: initial !important; /* سيصبح على اليمين */
+}
+
+body[dir="ltr"] .experience-box,
+body[dir="ltr"] .screen-1,
+body[dir="ltr"] .screen-2,
+body[dir="ltr"] .screen-3,
+body[dir="ltr"] .demo-btn {
+    left: initial !important;
+    right: auto !important; /* سيصبح على اليسار */
+}
+
+/* إذا عندك أي نصوص داخل كروت أو أي عناصر flex تحتاج قلب المحاذاة */
+body[dir="rtl"] .training-card-mini,
+body[dir="rtl"] .service-text-card,
+body[dir="rtl"] .why-card,
+body[dir="rtl"] .customer-card {
+    text-align: right !important;
+    align-items: flex-end !important;
+}
+
+body[dir="ltr"] .training-card-mini,
+body[dir="ltr"] .service-text-card,
+body[dir="ltr"] .why-card,
+body[dir="ltr"] .customer-card {
+    text-align: left !important;
+    align-items: flex-start !important;
+}
+
+/* القوائم أو أي flex row */
+body[dir="rtl"] .d-flex,
+body[dir="rtl"] .row {
+    flex-direction: row-reverse !important;
+}
+
+body[dir="ltr"] .d-flex,
+body[dir="ltr"] .row {
+    flex-direction: row !important;
+}
+
+/* أي صور أو كروت تحتاج قلب float أو margin */
+body[dir="rtl"] .customer-card-img {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+body[dir="ltr"] .customer-card-img {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+/* =====================
+   Global / Body
+===================== */
+/* =====================
+   Global Reset / Base
+===================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(178.21deg,
+            #FFFFFF 1.51%,
+            #A6CBEF 16.49%,
+            #7AB0E8 24.04%,
+            #4E96E0 49.62%,
+            #1C78D5 53.37%,
+            #FFFFFF 99.72%);
+}
+
+/* =====================
+   Navbar
+===================== */
+
+/* =====================
+   Navbar
+===================== */
+.navbar {
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.navbar-brand {
+    font-weight: 700;
+    color: #d9534f;
+    font-size: 1.5rem;
+}
+
+/* Navbar Links */
+.navbar .nav-link {
+    font-weight: 500;
+    color: #333;
+    padding: 8px 12px;
+    display: inline-block;
+    position: relative; /* ضروري للـ pseudo-element */
+    transition: color 0.3s ease;
+}
+
+/* Hover Effect */
+.navbar .nav-link:hover {
+    color: #0d6efd;  
+    text-decoration: none;
+}
+
+/* Active Link - تأثير خط متحرك */
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0%;
+    background-color: #0d6efd;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.navbar .nav-link.active::after {
+    width: 100%;
+}
+
+
+
+
+/* =====================
+   Hero Section
+===================== */
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-img {
+    width: 65%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 24px;
+}
+
+/* Hero Animation */
+.hero-text-animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.hero-text-animate.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-img-animate {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 1s ease-out;
+}
+
+.hero-img-animate.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* =====================
+   Section Titles
+===================== */
+.section-title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 50px 0 30px;
+    color: #0b3c5d;
+}
+
+/* =====================
+   Buttons
+===================== */
+.btn-primary {
+    background: linear-gradient(90deg, #2E1780 0%, #15063B 100%);
+    border: none;
+    /* لأن عندنا gradient مش محتاج border تقليدي */
+    border-radius: 12px;
+    padding: 10px 25px;
+    font-weight: 500;
+    color: #fff;
+    /* نص أبيض على gradient */
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+    /* يكبر الإضاءة شوية عند hover */
+    cursor: pointer;
+}
+
+/* =====================
+   Horizontal Service Cards
+===================== */
+.service-card-horizontal {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    min-height: 180px;
+}
+
+.service-card-horizontal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.service-text-card {
+    flex: 1;
+    color: #0b3c5d;
+    min-width: 0;
+    word-wrap: break-word;
+}
+
+.service-img-card {
+    width: 180px;
+    height: 180px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: none;
+    /* box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18); */
+}
+
+
+.service-img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =====================
+   Service Card Colors
+===================== */
+.card-color-1 {
+    background: linear-gradient(123deg,
+            rgba(193, 229, 216, 0.55),
+            rgba(255, 255, 255, 0.35));
+}
+
+.card-color-2 {
+    background: linear-gradient(123deg,
+            rgba(24, 119, 242, 0.55),
+            rgba(255, 255, 255, 0.35));
+}
+
+.card-color-3 {
+    background: linear-gradient(123deg,
+            rgba(193, 229, 216, 0.55),
+            rgba(255, 255, 255, 0.35));
+}
+
+/* =====================
+   Training Section – Smooth Integrated Edges
+===================== */
+.training-section {
+    position: relative;
+    background: linear-gradient(135deg,
+            rgba(166, 203, 239, 0.45),
+            rgba(79, 163, 255, 0.45));
+    padding: 80px 40px;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.training-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center,
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.05) 45%,
+            rgba(255, 255, 255, 0) 75%);
+    pointer-events: none;
+}
+
+.training-section>.container {
+    position: relative;
+    z-index: 2;
+}
+
+.training-section h2 {
+    color: #000;
+}
+
+.training-section p {
+    color: #333;
+}
+
+/* Screens */
+.training-screens {
+    position: relative;
+    height: 320px;
+    max-width: 420px;
+    filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.18));
+}
+
+.training-screens .screen {
+    width: 200px;
+    margin-top: 50px;
+    border-radius: 16px;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+
+/* Mini Cards */
+.training-card-mini {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    /* عمودي: أيقونة فوق نص */
+    align-items: flex-start;
+    /* محاذاة لليسار */
+    text-align: left;
+    gap: 10px;
+    padding: 16px 12px;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.35),
+        0 12px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.training-card-mini:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.45),
+        0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.training-card-mini p {
+    font-size: 0.8rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.training-card-mini .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #e9f2ff;
+    color: #2c7be5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    /* مسافة بين الأيقونة والنص */
+}
+
+
+
+/* Customer Centric Service Section */
+.customer-section {
+    position: relative;
+    background: linear-gradient(135deg,
+            #A6CBEF 0%,
+            #7AB0E8 35%,
+            #4E96E0 65%,
+            #1C78D5 100%);
+    padding: 80px 40px;
+    margin-top: 0;
+}
+
+.customer-section h2,
+.customer-section h3 {
+    color: #0b3c5d;
+}
+
+.customer-section p,
+.customer-section .feature-list li {
+    color: #333;
+    font-weight: 500;
+}
+
+.customer-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.customer-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.customer-card-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    margin-left: 0;
+    margin-right: auto;
+    margin-top: 10px;
+    border: 2px solid #ffffff;
+}
+
+.customer-card-text {
+    font-weight: 500;
+    color: #0b0b0b;
+    font-size: 0.9rem;
+}
+
+/* =====================
+   Footer
+===================== */
+.footer {
+    background: #000;
+    color: #fff;
+    padding: 70px 0 20px;
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Top */
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: 60px;
+}
+
+/* Brand */
+.footer-brand {
+    max-width: 420px;
+}
+
+.footer-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.footer-form input {
+    flex: 1;
+    background: transparent;
+    border: 1px solid #333;
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.footer-form input::placeholder {
+    color: #777;
+}
+
+.footer-form button {
+    background: #6c63ff;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-title {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.brand-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #aaa;
+}
+
+/* Social */
+.social-icons {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.social-icons a {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    background: #6c63ff;
+    border-color: #6c63ff;
+}
+
+/* Links */
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.footer-links h6 {
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.footer-links a {
+    display: block;
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 8px;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+/* Bottom */
+.footer-bottom {
+    border-top: 1px solid #222;
+    margin-top: 50px;
+    padding-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: #777;
+}
+
+.why-choose-section {
+    padding: 90px 20px;
+    background: linear-gradient(135deg,
+            rgba(79, 163, 255, 0.08),
+            rgba(166, 203, 239, 0.18));
+}
+
+/* Header */
+.section-header h2 {
+    font-size: 38px;
+    font-weight: 800;
+    color: #000;
+}
+
+.section-header h2 span {
+    color: #000;
+    /* كله أسود */
+}
+
+.section-header p {
+    max-width: 620px;
+    margin: 14px auto 60px;
+    color: #222;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* Grid */
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 26px;
+}
+
+/* Card */
+.why-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 22px;
+    padding: 36px 26px;
+    text-align: center;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+    transition: all 0.35s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.18);
+}
+
+/* Icon */
+.why-card .icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 18px;
+    background: #f1f1f1;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 20px;
+}
+
+/* Title */
+.why-card h5 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+/* Text */
+.why-card p {
+    font-size: 14.5px;
+    color: #222;
+    line-height: 1.7;
+}
+
+.icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #e9f2ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.icon img {
+    width: 20px;
+    /* نفس حجم أيقونة Bootstrap */
+    height: 20px;
+    object-fit: contain;
+}
+
+
+
+/* responsive.css */
+
+/* ==== MOBILE DEVICES (<=576px) ==== */
+@media (max-width: 576px) {
+
+    /* Navbar */
+    .navbar .navbar-nav {
+        text-align: center;
+    }
+
+    /* Hero */
+    .hero-text-animate {
+        text-align: center;
+    }
+
+    .hero-img {
+        width: 100%;
+        aspect-ratio: auto;
+        margin-top: 20px;
+    }
+
+    /* Section titles */
+    .section-title {
+        font-size: 1.4rem;
+        margin: 30px 0 20px;
+    }
+
+    /* Service cards (Featured Products) */
+    .row.g-4>.col-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .service-card-horizontal {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .service-img-card {
+        width: 100%;
+        height: 180px;
+    }
+
+    /* About */
+    .about-img {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .experience-box {
+        position: static !important;
+        margin: 15px auto 0;
+        text-align: center;
+    }
+
+    /* Why Choose Section */
+    .why-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    /* Training images */
+    .screen-1,
+    .screen-2,
+    .screen-3 {
+        position: relative;
+        inset: auto;
+        margin: 10px auto;
+        width: 85%;
+    }
+
+    /* Training cards */
+    .row.g-3 .col-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    /* Customer cards */
+    #customer-service .row>.col-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    /* Footer */
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-links {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+/* ==== TABLET DEVICES (577px - 992px) ==== */
+@media (min-width: 577px) and (max-width: 992px) {
+
+    /* Hero */
+    .hero-img {
+        width: 85%;
+    }
+
+    /* Service cards */
+    .service-card-horizontal {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .service-img-card {
+        width: 100%;
+        max-width: 320px;
+        height: 220px;
+        margin: auto;
+    }
+
+    /* Why Choose */
+    .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Training */
+    .screen-1 {
+        left: 120px;
+    }
+
+    .screen-2 {
+        left: 40px;
+    }
+
+    .screen-3 {
+        left: 0;
+    }
+
+    /* Footer */
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==== SMALL DESKTOP / LAPTOP (993px - 1200px) ==== */
+@media (min-width: 993px) and (max-width: 1200px) {
+
+    .hero-img {
+        width: 70%;
+    }
+
+    .why-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ===================== 
+   SHOP PAGE STYLES
+===================== */
+
+.shop-page {
+    padding-top: 120px;
+    /* عشان navbar fixed */
+}
+
+/* ===== Shop Hero ===== */
+.shop-hero {
+    text-align: center;
+    padding: 60px 0 40px;
+}
+
+.shop-hero h1 {
+    font-weight: 800;
+    font-size: 50px;
+    color: #000;
+}
+
+.shop-hero p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* ===== Collection Cards ===== */
+.collection-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.35s ease;
+    width: 100%;
+    max-width: 100%;
+
+    height: auto;
+    min-height: 220px;
+    text-align: left;
+}
+
+.collection-card img {
+    width: 180px;
+    /* حجم الصورة */
+    height: 180px;
+    /* ارتفاع الصورة */
+    object-fit: cover;
+    /* لتجنب تشويه الصورة */
+    border-radius: 10px;
+}
+
+
+
+.collection-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.15);
+}
+
+.collection-card img {
+    width: 180px;
+    height: 180ppx;
+    object-fit: contain;
+}
+
+/* ===== Filter Box ===== */
+.filter-box {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+}
+
+.filter-box h6 {
+    margin-bottom: 20px;
+}
+
+.filter-option {
+    display: flex;
+    justify-content: space-between;
+    /* نص على اليسار، checkbox على اليمين */
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.filter-box small {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.filter-box input[type="checkbox"] {
+    margin: 0;
+    transform: scale(1.5);
+    /* 1.5 يعني 150% من الحجم الأصلي */
+}
+
+
+/* ===== Product Cards ===== */
+.product-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* توسيط أفقي */
+    text-align: center;
+    transition: all 0.35s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 14px;
+}
+
+.product-card h6 {
+    font-weight: 600;
+    margin-top: 12px;
+    color: #000;
+}
+
+.product-card small {
+    font-size: 12px;
+}
+
+/* ===== Price ===== */
+.price {
+    font-weight: 700;
+    color: #1c78d5;
+    font-size: 15px;
+}
+
+/* ===== Add To Cart Button ===== */
+.btn-add {
+    background: linear-gradient(90deg, #2E1780 0%, #15063B 100%);
+    border: none;
+    border-radius: 20px;
+    font-size: 13px;
+    padding: 10px 14px;
+    width: 120px;
+    color: #fff;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+    /* زيادة المسافة بين الزر وأيقونة القلب */
+}
+
+.btn-add:hover {
+    filter: brightness(1.15);
+    color: #fff;
+}
+
+/* ===== Heart Icon ===== */
+.product-card .bi-heart {
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+    /* إذا تريد، يمكن تقليل الهامش من القلب */
+    margin-left: 60px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #000;
+}
+
+.product-card .d-flex {
+    gap: 12px;
+}
+
+.product-card .bi-heart {
+    margin-left: 0;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .product-card img {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 577px) and (max-width: 991px) {
+    .product-card img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+    .product-card img {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+
+/* =======================
+   Service 2 Styles
+======================= */
+.service2 {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.service2 .section-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.service2 .card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    height: 300px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.service2 .card:hover {
+    transform: scale(1.05);
+}
+
+.service2 .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.service2 .card-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+}
+
+.service2 .card-body h5 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.service2 .card-body p {
+    font-size: 0.9rem;
+    margin: 5px 0 0;
+}
+
+.service2 .card-body a.btn {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    margin-top: 5px;
+}
+
+/*responsiveness========*/
+/* Services Section Responsive */
+@media (max-width: 576px) {
+    .service2 .row>div {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .service2 .card {
+        height: 250px;
+        /* أصغر على الموبايل */
+    }
+
+    .service2 .card-body h5 {
+        font-size: 1rem;
+    }
+
+    .service2 .card-body p {
+        font-size: 0.8rem;
+    }
+
+    .service2 .card-body a.btn {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+    }
+}
+
+
+
+
+/* ==========================
+   Form Section
+========================== */
+.request-demo-section {
+    padding: 80px 0 60px 0;
+    background: #f8f9fa;
+}
+
+.request-demo-section .section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.request-demo-section .section-desc {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.demo-form {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.demo-form .form-label {
+    font-weight: 500;
+}
+
+.demo-form .form-control {
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+}
+
+.demo-form button {
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* ==========================
+   Responsive Styles
+========================== */
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 991.98px) {
+    .request-demo-section {
+        padding: 60px 20px 40px 20px;
+    }
+
+    .demo-form {
+        padding: 30px 20px;
+    }
+
+    .request-demo-section .section-title {
+        font-size: 2rem;
+    }
+
+    .request-demo-section .section-desc {
+        font-size: 1rem;
+    }
+}
+
+/* Small devices (mobiles, 576px and up) */
+@media (max-width: 767.98px) {
+    .request-demo-section {
+        padding: 50px 15px 30px 15px;
+    }
+
+    .demo-form {
+        padding: 25px 15px;
+    }
+
+    .request-demo-section .section-title {
+        font-size: 1.6rem;
+    }
+
+    .request-demo-section .section-desc {
+        font-size: 0.95rem;
+    }
+
+    .demo-form .form-control {
+        padding: 10px 12px;
+    }
+}
+
+/* Extra small devices (<576px) */
+@media (max-width: 575.98px) {
+    .request-demo-section {
+        padding: 40px 10px 25px 10px;
+    }
+
+    .demo-form {
+        padding: 20px 10px;
+    }
+
+    .request-demo-section .section-title {
+        font-size: 1.4rem;
+    }
+
+    .request-demo-section .section-desc {
+        font-size: 0.9rem;
+    }
+}
+
+/* // */
+/* ==========================
+   Auth Section
+========================== */
+.auth-section {
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.auth-cards {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.auth-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    width: 360px;
+    transition: transform 0.3s;
+}
+
+.auth-card:hover {
+    transform: translateY(-5px);
+}
+
+.auth-card h5 {
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #000;
+}
+
+.auth-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.auth-card .form-control {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+.auth-card button.btn {
+    width: 100%;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.create-card .user-icon {
+    font-size: 50px;
+    color: #1c78d5;
+}
+
+.social-btn button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* ==========================
+   Responsive Styles
+========================== */
+
+/* Medium devices (tablets) */
+@media (max-width: 991.98px) {
+    .auth-section {
+        padding: 60px 15px;
+    }
+
+    .auth-card {
+        width: 320px;
+        padding: 25px 15px;
+    }
+
+    .auth-card p {
+        font-size: 0.9rem;
+    }
+
+    .create-card .user-icon {
+        font-size: 45px;
+    }
+}
+
+/* Small devices (mobiles) */
+@media (max-width: 575.98px) {
+    .auth-section {
+        padding: 40px 10px;
+    }
+
+    .auth-card {
+        width: 100%;
+        max-width: 300px;
+        padding: 20px 15px;
+    }
+
+    .auth-card h5 {
+        font-size: 1.1rem;
+    }
+
+    .auth-card p {
+        font-size: 0.85rem;
+    }
+
+    .create-card .user-icon {
+        font-size: 40px;
+    }
+
+    .social-btn button {
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+}
+
+/* ==== Account Card ==== */
+/* Container Card */
+.account-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Switcher Button */
+#switchBtn {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 30px auto;
+    padding: 10px 0;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
+    background: #e9e9e9;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#switchBtn:hover {
+    background: #d4d4d4;
+}
+
+/* Card Title */
+.account-card h5 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* Form Fields */
+.account-card .form-control {
+    border-radius: 50px;
+    /* Oval fields */
+    padding: 10px 20px;
+    height: 50px;
+}
+
+/* Button */
+.account-card button {
+    border-radius: 50px;
+    /* Oval button */
+    padding: 12px;
+    font-weight: 600;
+}
+
+/* Row Gap */
+.account-card .row>.col-md-6 {
+    margin-bottom: 15px;
+}
+
+/* Birthday Fields */
+.account-card .row>.col-md-4 {
+    margin-bottom: 15px;
+}
+
+/* Checkbox */
+.form-check-label {
+    font-weight: 500;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    .account-card {
+        padding: 20px;
+    }
+}
+
+.company-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.company-card h5 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.company-card .form-control {
+    border-radius: 50px;
+    /* Oval fields */
+    padding: 10px 20px;
+}
+
+.company-card button {
+    border-radius: 50px;
+    /* Oval button */
+    padding: 10px;
+    font-weight: 600;
+}
+
+.create-account-section {
+    padding-top: 100px;
+    /* يمكنك تعديل القيمة حسب ارتفاع navbar */
+    padding-bottom: 60px;
+}
+
+/* // */
+/* =====================
+   About 2 Section
+===================== */
+.about2-section {
+    padding-bottom: 60px;
+    /* أخف شوية */
+}
+
+/* =====================
+   Cards (General)
+/* =====================
+   About Us Cards
+===================== */
+.about2-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.about2-card h5,
+.about2-card h6 {
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.about2-card p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* =====================
+   Lift section UP
+===================== */
+.about2-vision {
+    margin-top: -50px;
+    /* يرفع الكروت لفوق بوضوح */
+}
+
+/* =====================
+   Equal height rows
+===================== */
+.about2-row {
+    align-items: stretch;
+}
+
+/* =====================
+   Image Cards
+===================== */
+.image-card {
+    padding: 0;
+    overflow: hidden;
+    height: 455px;
+    /* التحكم في صغر / كبر الارتفاع */
+    border-radius: 20px;
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* =====================
+   Stack (Left Column)
+===================== */
+.about2-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+}
+
+/* Two cards same size */
+.about2-stack .equal-card {
+    height: 220px;
+    /* 👈 نفس ارتفاع الكارت الثاني */
+}
+
+.about2-vision .about2-card {
+    height: 300px;
+    /* نفس ارتفاع stack cards */
+}
+
+.about2-vision .image-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.about2-vision .image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+}
+
+/* =====================
+   Core Values Section
+===================== */
+.about2-values h5 {
+    font-weight: 700;
+}
+
+.value-box {
+    background: #fff;
+    padding: 22px;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    text-align: center;
+}
+
+.value-box i {
+    font-size: 26px;
+    color: #0d6efd;
+    margin-bottom: 10px;
+}
+
+.value-box h6 {
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.value-box p {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* =====================
+   Images overlapping (Partnership Section)
+===================== */
+.col-lg-6.position-relative {
+    overflow: visible;
+    /* لو الصور خارجة عن حدود العمود */
+}
+
+.screen-1 {
+    position: absolute;
+    bottom: 20px;
+    left: 150px;
+    z-index: 3;
+    width: 300px;
+}
+
+.screen-2 {
+    position: absolute;
+    bottom: 115px;
+    left: 120px;
+    z-index: 2;
+    width: 250px;
+}
+
+.screen-3 {
+    position: absolute;
+    bottom: 150px;
+    left: 60px;
+    z-index: 1;
+    width: 270px;
+}
+
+/* =====================
+   Buttons inside Cards
+===================== */
+.about2-card.position-relative {
+    position: relative;
+    /* مهم لاحتواء الزر داخل الكارد */
+}
+
+.demo-btn {
+    bottom: 20px;
+    right: 20px;
+    position: absolute;
+    z-index: 5;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+/* =====================
+   Responsive
+===================== */
+@media(max-width: 992px) {
+    .screen-1 {
+        left: 120px;
+        width: 250px;
+        bottom: 15px;
+    }
+
+    .screen-2 {
+        left: 90px;
+        width: 220px;
+        bottom: 90px;
+    }
+
+    .screen-3 {
+        left: 40px;
+        width: 220px;
+        bottom: 130px;
+    }
+
+    .about2-vision .about2-card {
+        height: auto;
+    }
+
+    .about2-stack .equal-card {
+        height: auto;
+    }
+}
+
+@media(max-width: 576px) {
+    .screen-1 {
+        left: 50px;
+        width: 180px;
+        bottom: 10px;
+    }
+
+    .screen-2 {
+        left: 30px;
+        width: 160px;
+        bottom: 70px;
+    }
+
+    .screen-3 {
+        left: 10px;
+        width: 150px;
+        bottom: 100px;
+    }
+
+    .demo-btn {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================= */
+/* Training 2 Section */
+/* ============================= */
+/* ===== Training2 Section ===== */
+.training2-section .row.d-flex {
+    align-items: stretch;
+    /* يجعل الأعمدة بنفس الارتفاع */
+}
+
+/* Text Card */
+.training2-card {
+    background: #fff;
+    padding: 30px 25px;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 1 auto;
+    /* يملأ العمود بالكامل */
+}
+
+/* العنوان */
+.training2-card h4 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* النص */
+.training2-card p {
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* Image Card */
+.training2-card.image-card {
+    padding: 0;
+    /* إزالة padding لتغطية الصورة بالكامل */
+    overflow: hidden;
+}
+
+.training2-card.image-card img.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+    display: block;
+}
+
+.value-box p {
+    font-size: 1.15rem;
+    /* حجم أكبر للنص */
+    line-height: 1.7;
+    color: #555;
+}
+
+.training-form-section .card {
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+}
+
+.training-form-section h2 {
+    font-size: 2rem;
+    color: #dc5e5e;
+}
+
+.training-form-section p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.training-form-section .form-control-lg {
+    padding: 15px 20px;
+    font-size: 1rem;
+    border-radius: 12px;
+}
+
+.training-form-section .btn-lg {
+    padding: 15px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+}
+
+/* =====================
+   Learn More Section
+===================== */
+
+/* =====================
+   Learn More Section
+===================== */
+.learn-more-section {
+    padding: 120px 0 60px 0;
+    /* مسافة من الـ navbar */
+}
+
+/* الكارد العام */
+.learn-more-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* نبدأ من الأعلى */
+    padding: 25px 20px;
+    /* مساحة للنص */
+    height: 250px;
+    /* أقل ارتفاع للصورة والنص */
+    overflow: hidden;
+    /* مهم للصورة إذا استخدمتها هنا */
+}
+
+/* النص */
+.learn-more-card h4 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #1c78d5;
+}
+
+.learn-more-card p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* كارد الصورة */
+.image-card {
+    padding: 0;
+    min-height: 250px;
+}
+
+/* الصورة */
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+}
+
+/* تأكد من أن الكاردين نفس الطول */
+.row.align-items-stretch {
+    display: flex;
+    align-items: stretch;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .row.align-items-stretch {
+        flex-direction: column;
+    }
+
+    .image-card {
+        margin-top: 20px;
+        height: 300px;
+    }
+}
+
+
+.learn-more-card.text-card {
+    height: 200px;
+    max-height: 220px;
+}
+
+.learn-more-btn {
+    display: inline-block;
+    width: 100%;
+    /* نفس عرض الكارد */
+    text-align: center;
+    padding: 12px 0;
+    background-color: #10355a;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.learn-more-btn:hover {
+    background-color: #155fa0;
+}
+
+/* الكارد العام للصور */
+.learn-more-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 300px;
+    /* ارتفاع ثابت للصورة */
+}
+
+/* الصورة تغطي الكارد بالكامل */
+.image-card .img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* نصوص خارج الكارد */
+.learn-more-new-section h4 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: red;
+    margin-bottom: 15px;
+}
+
+.learn-more-new-section p {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+.learn-more-new-section .first-image {
+    height: 480px;
+    /* يمكنك تغييره */
+}
+
+.learn-more-new-section .second-image {
+    max-width: 600px;
+    /* أقصى عرض للكارد */
+    width: 100%;
+    /* العرض الافتراضي للعمود */
+    height: 380px;
+    /* ارتفاع محدد */
+    margin: 0 auto;
+    /* توسيط */
+}
+
+/* زر الاستفسار تحت النص */
+
+/* Responsive */
+@media (max-width: 992px) {
+    .learn-more-new-section .row {
+        flex-direction: column;
+    }
+
+    .learn-more-new-section .learn-more-card {
+        height: 250px;
+        /* ارتفاع أقل للموبايل */
+        margin-bottom: 20px;
+    }
+}
+
+
+/* =====================
+   Shop Board Section
+===================== */
+/* Shop Board Section */
+.shop-board-section {
+    padding-top: 140px;
+    padding-bottom: 100px;
+}
+
+/* Card */
+.shop-board-section .shop-card {
+    border: 0;   
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    background: #fff;
+    display: flex;
+    flex-direction: column; /* default column for mobile */
+    align-items: center;
+    gap: 1.5rem;
+    padding: 20px;
+}
+
+.shop-board-section .shop-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+/* Text Wrapper */
+.shop-board-section .text-wrapper {
+    flex: 1;
+}
+
+/* Image */
+.shop-board-section .image-wrapper {
+    flex-shrink: 0;
+}
+
+.shop-board-section .img-cover {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* Responsive */
+@media (min-width: 992px) {
+    .shop-board-section .shop-card {
+        flex-direction: row; /* نص + صورة جنب بعض على ديسكتوب */
+        align-items: center;
+    }
+    .shop-board-section .image-wrapper {
+        width: 350px; /* حجم الصورة ثابت على الديسكتوب */
+        margin-left: 30px;
+    }
+}
+
+@media (max-width: 991px) {
+    .shop-board-section .shop-card {
+        flex-direction: column; /* عمود على الموبايل */
+        text-align: center;
+        padding: 15px;
+    }
+    .shop-board-section .image-wrapper {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 15px; /* مسافة بين الصورة والنص */
+    }
+    .shop-board-section .img-cover {
+        height: 250px; /* أصغر للموبايل */
+    }
+}
+
+/* =========
+/* =====================
+   shop_board1_Section
+===================== */
+.big-card-section {
+    padding-top: 180px;
+    /* مسافة من navbar */
+    padding-bottom: 80px;
+}
+
+.big-card {
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    width: 100%;
+    margin: 40px auto 60px auto;
+    padding: 0;
+    height: 500px;
+}
+
+/* Big Card Image */
+.big-card-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 25px;
+}
+
+/* Small Text Card (Top Left) */
+.small-text-card {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    max-width: 400px;
+    padding: 1rem;
+    color: #fff;
+}
+
+/* Small Image Card (Bottom Right) */
+.small-image-card {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 200px;
+    height: 200px;
+}
+
+.small-image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* ===============================
+   Responsive – Big Card Section
+================================ */
+
+/* Tablet & Mobile */
+@media (max-width: 991px) {
+
+    .big-card {
+        height: auto; /* 👈 مهم */
+        padding: 15px;
+    }
+
+    /* الصورة الكبيرة */
+    .big-card-content img {
+        height: 300px;
+        border-radius: 20px;
+    }
+
+    /* كارت النص */
+    .small-text-card {
+        position: relative;      /* 👈 إزالة absolute */
+        top: auto;
+        left: auto;
+        max-width: 100%;
+        margin-bottom: 15px;
+        background: rgba(0, 0, 0, 0.75);
+    }
+
+    /* الصورة الصغيرة */
+    .small-image-card {
+        position: relative;      /* 👈 إزالة absolute */
+        bottom: auto;
+        right: auto;
+        width: 140px;
+        height: 140px;
+        margin: 15px auto 0;     /* في المنتصف */
+    }
+}
+
+/* Mobile Only */
+@media (max-width: 576px) {
+
+    .big-card-section {
+        padding-top: 140px;
+        padding-bottom: 60px;
+    }
+
+    .big-card-content img {
+        height: 240px;
+    }
+
+    .small-text-card h5 {
+        font-size: 1rem;
+    }
+
+    .small-text-card p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .small-image-card {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* =====================
+   Full Width Card (Text Left, Image Right)
+===================== */
+/* =========================
+   Full Width Section
+========================= */
+.full-width-section {
+    width: 100%;
+    margin-top: 60px;
+}
+
+/* Full Width Card */
+.full-width-card {
+    width: 100%;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 2rem;
+    color: #000;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+/* Text Wrapper */
+.full-width-card .text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.full-width-card .text-wrapper h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.full-width-card .text-wrapper p,
+.full-width-card .text-wrapper ul,
+.full-width-card .text-wrapper hr {
+    color: #555;
+}
+
+.full-width-card .text-wrapper ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Image Wrapper */
+.full-width-card .image-wrapper {
+    flex-shrink: 0;
+    max-width: 60%;
+}
+
+.full-width-card .image-wrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* =========================
+   Specs Section
+========================= */
+.specs-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, rgba(166, 203, 239, 0.1), rgba(79, 163, 255, 0.1));
+}
+
+.specs-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.specs-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+}
+
+.spec-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #0b1f3b;
+}
+
+.spec-item i {
+    font-size: 24px;
+    color: #0b1f3b;
+}
+
+.specs-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 380px;
+}
+
+.specs-image img.board-center-img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 16px;
+}
+
+.specs-column:first-child {
+    padding-right: 20px;
+}
+
+.specs-column:last-child {
+    padding-left: 100px;
+}
+
+@media (max-width: 1200px) {
+    .specs-image {
+        flex: 0 0 350px;
+    }
+}
+
+/* =========================
+   Product Images Section
+========================= */
+.product-images-section {
+    padding: 120px 0 60px 0;
+    background: linear-gradient(135deg, rgba(166, 203, 239, 0.15), rgba(79, 163, 255, 0.15));
+}
+
+.product-images-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+}
+
+/* Thumbnails Card */
+.thumbs-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+}
+
+.thumbs-card img.thumb-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 12px;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.thumbs-card img.thumb-img:hover {
+    background: #e2e8f0;
+    transform: scale(1.05);
+}
+
+/* Main Image Card */
+.main-image-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 0;
+    flex: 1;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.main-image-card img.main-img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+/* Content Column */
+.product-title {
+    font-weight: 600;
+    color: #0b1f3b;
+    margin-bottom: 15px;
+}
+
+.product-title .brand {
+    color: #e10600;
+    font-weight: 700;
+}
+
+.product-desc {
+    color: #102a43;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.price {
+    font-weight: 600;
+    color: #0b1f3b;
+    margin-bottom: 15px;
+}
+
+.out-stock-btn {
+    width: 120px;
+    padding: 6px 0;
+    font-size: 9px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(166, 203, 239, 0.2));
+    color: #0b1f3b;
+    border: 2px solid rgba(79, 163, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+}
+
+/* Description below main image */
+.main-image-desc {
+    background: transparent;
+    color: #102a43;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 100%;
+    padding: 5px 0;
+}
+
+.column-end-desc {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: #102a43;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.column-end-desc .desc-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: #0b1f3b;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.column-end-desc strong {
+    font-weight: 700;
+    color: #0b1f3b;
+}
+
+/* Similar Products */
+.similar-products-section {
+    background: linear-gradient(135deg, rgba(79, 163, 255, 0.05), rgba(166, 203, 239, 0.05));
+    padding: 80px 0;
+}
+
+.similar-products-section .section-title {
+    font-weight: 600;
+    color: #0b1f3b;
+}
+
+.similar-card {
+    background: #ffffff;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    padding: 1.2rem;
+}
+
+.similar-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.similar-card .product-name {
+    font-weight: 600;
+    color: #0b1f3b;
+    margin-bottom: 8px;
+}
+
+.similar-card .product-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #102a43;
+    margin-bottom: 8px;
+}
+
+.similar-card .btn {
+    font-size: 12px;
+    padding: 6px 20px;
+    border-radius: 30px;
+}
+
+.similar-card .image-wrapper img {
+    max-width: 180px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.similar-card .image-wrapper img:hover {
+    transform: scale(1.05);
+}
+
+/* =========================
+   Thumbnails Arrows
+========================= */
+.thumbs-card-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.thumb-arrow {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: absolute;
+    z-index: 10;
+    color: #0b1f3b;
+    font-size: 18px;
+}
+
+.thumb-arrow:hover {
+    background: rgba(79, 163, 255, 0.15);
+    color: #4f9fff;
+    transform: scale(1.1);
+}
+
+.thumb-arrow-up {
+    top: -20px;
+}
+
+.thumb-arrow-down {
+    bottom: -20px;
+}
+
+/* Scrollable Thumbnails */
+.thumbs-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 5px 0;
+}
+
+.thumbs-card::-webkit-scrollbar {
+    width: 6px;
+}
+
+.thumbs-card::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.thumbs-card::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* =========================
+   Heart Button
+========================= */
+.heart-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.heart-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.heart-btn i {
+    font-size: 20px;
+    color: #e10600;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.heart-btn i.bi-heart-fill {
+    opacity: 0;
+}
+
+.heart-btn.active i.bi-heart-fill {
+    opacity: 1;
+}
+
+.heart-btn.active i.bi-heart {
+    opacity: 0;
+}
+
+.heart-btn:active {
+    transform: scale(0.95);
+}
+
+/* =========================
+   Responsive
+========================= */
+/* =========================
+   Mobile Thumbnails Arrows Fix
+========================= */
+/* =========================
+   Mobile Thumbnails & Arrows Fix
+========================= */
+@media (max-width: 768px) {
+
+    /* إخفاء جميع الأزرار على الموبايل */
+    .thumb-arrow {
+        display: none !important;
+    }
+
+    /* Thumbnails أفقية */
+    .thumbs-card-wrapper {
+        justify-content: center;
+    }
+
+    .thumbs-card {
+        padding: 5px 10px; /* لا حاجة لفراغ جانبي كبير */
+        overflow-x: auto;
+    }
+
+    .thumbs-card img.thumb-img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    /* Main Image */
+    .main-image-card img.main-img {
+        width: 85%;
+        height: 85%;
+        object-fit: contain;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .similar-card {
+        padding: 1rem;
+    }
+
+    .similar-card .image-wrapper img {
+        max-width: 120px;
+    }
+
+    .similar-card .product-desc {
+        font-size: 13px;
+    }
+
+    .heart-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .heart-btn i {
+        font-size: 18px;
+    }
+}
+
+.mobile-arrow {
+    display: none;
+}
+
+.desktop-arrow {
+    display: inline-flex;
+}  
+/* // */
+
+
+/* ===== Contact Section Responsiveness ===== */
+.contact-section {
+    padding-top: 140px; /* يمكنك تعديله حسب حاجتك */
+    padding-bottom: 60px;
+}
+
+/* Card adjustments */
+.contact-section .card {
+    border-radius: 16px;
+    padding: 30px;
+}
+
+/* Container للزر */
+/* Container للزر */
+.toggle-button {
+    position: relative;
+    display: inline-block;
+    width: 320px; /* العرض الافتراضي */
+    height: 50px; /* الارتفاع الافتراضي */
+}
+
+/* إخفاء الـ checkbox */
+.toggle-button input {
+    display: none;
+}
+
+/* تصميم الـ label */
+.toggle-button label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ddd; /* لون الخلفية */
+    border-radius: 30px;
+    cursor: pointer;
+    padding: 0 10px; /* المسافة الداخلية */
+    height: 100%;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+/* نصوص اليمين واليسار */
+.toggle-button label .left,
+.toggle-button label .right {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    line-height: 50px; /* مطابق لارتفاع الزر */
+    white-space: nowrap; /* يمنع النص من الانكسار */
+    overflow: hidden; /* يمنع خروج النص */
+    text-overflow: ellipsis; /* يضيف ... إذا طول النص أكبر */
+    transition: font-size 0.3s, line-height 0.3s;
+}
+
+/* الدائرة المتحركة */
+.toggle-button label::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 50%;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    transition: transform 0.3s, width 0.3s, height 0.3s;
+}
+
+/* عند الضغط على الـ checkbox */
+.toggle-button input:checked+label::before {
+    transform: translateX(100%);
+}
+
+/* ===== Responsive Adjustments ===== */
+
+/* لأجهزة أقل من 992px */
+@media (max-width: 992px) {
+    .toggle-button {
+        width: 280px;
+        height: 45px;
+    }
+    .toggle-button label .left,
+    .toggle-button label .right {
+        line-height: 45px;
+        font-size: 0.95rem;
+    }
+    .toggle-button label::before {
+        height: 36px;
+        top: 4px;
+    }
+}
+
+/* لأجهزة أقل من 768px */
+@media (max-width: 768px) {
+    .toggle-button {
+        width: 220px;
+        height: 40px;
+    }
+    .toggle-button label .left,
+    .toggle-button label .right {
+        line-height: 40px;
+        font-size: 0.85rem;
+    }
+    .toggle-button label::before {
+        height: 32px;
+        top: 4px;
+    }
+}
+
+/* لأجهزة أقل من 576px */
+@media (max-width: 576px) {
+    .toggle-button {
+        width: 180px;
+        height: 36px;
+    }
+    .toggle-button label .left,
+    .toggle-button label .right {
+        line-height: 36px;
+        font-size: 0.75rem;
+    }
+    .toggle-button label::before {
+        height: 30px;
+        top: 3px;
+    }
+}
