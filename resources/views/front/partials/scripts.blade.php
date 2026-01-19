@@ -12,20 +12,45 @@
  </script>
  <script src="{{ asset('assets/js/main.js') }}"></script>
  <script>
-     const toggleBtn = document.getElementById('toggleBtn');
-     const individualForm = document.getElementById('individualForm');
-     const companyForm = document.getElementById('companyForm');
+     document.addEventListener("DOMContentLoaded", function() {
+         const toggle = document.getElementById('toggleBtn');
+         const individualForm = document.getElementById('individualForm');
+         const companyForm = document.getElementById('companyForm');
 
-     toggleBtn.addEventListener('change', function() {
-         if (this.checked) {
-             individualForm.style.display = 'none';
-             companyForm.style.display = 'block';
-         } else {
-             individualForm.style.display = 'block';
-             companyForm.style.display = 'none';
+         // أزرار الإرسال
+         const submitBtnIndividual = document.getElementById('submitBtnIndividual');
+         const submitBtnCompany = document.getElementById('submitBtnCompany');
+
+         // تحديث عرض الفورم عند التغيير
+         function updateFormDisplay() {
+             if (toggle.checked) {
+                 individualForm.style.display = 'none';
+                 companyForm.style.display = 'block';
+             } else {
+                 individualForm.style.display = 'block';
+                 companyForm.style.display = 'none';
+             }
          }
+
+         // عند التغيير
+         toggle.addEventListener('change', updateFormDisplay);
+
+         // عند الضغط على زر الفردي
+         submitBtnIndividual.addEventListener('click', function() {
+             individualForm.querySelector('form').submit();
+         });
+
+         // عند الضغط على زر الشركة
+         submitBtnCompany.addEventListener('click', function() {
+             companyForm.querySelector('form').submit();
+         });
+
+         // ضبط العرض حسب الـ old value بعد reload
+         updateFormDisplay();
      });
  </script>
+
+
  <!-- Thumbnails Scroll + Heart JS -->
  <script>
      document.addEventListener("DOMContentLoaded", function() {
@@ -61,4 +86,3 @@
          });
      });
  </script>
- 

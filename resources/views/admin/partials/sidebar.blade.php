@@ -47,11 +47,14 @@
               </li>
           </ul>
           <div class="btn-box w-100 mt-4 mb-1">
-              <a href="#"
+            <form action="{{ route("admin.logout") }}" method="POST">
+                @csrf
+              <button 
                   class="btn btn-danger btn-lg w-100 d-flex align-items-center justify-content-center gap-2">
                   <i class="fe fe-log-out fs-5"></i>
                   <span class="small fw-semibold">Logout</span>
-              </a>
+              </button>
+              </form>
           </div>
 
       </nav>

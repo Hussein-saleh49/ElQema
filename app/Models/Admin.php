@@ -3,13 +3,14 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Notifications\AdminResetPasswordNotification;
 use App\Notifications\UserResetPasswordNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class Admin extends Authenticatable 
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -19,22 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var list<string>
      */
-    protected $fillable = [
-        'type',
-        'first_name',
-        'last_name',
-        'dob',
-        'gender',
-        'phone',
-        'company_name',
-        'job_title',
-        'contact_person',
-        'email',
-        'password',
-        'provider',
-        'provider_id',
-        'avatar',
-    ];
+    protected $guarded = ["id"];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -58,9 +44,10 @@ class User extends Authenticatable implements MustVerifyEmail
             'password'          => 'hashed',
         ];
     }
-
     public function sendPasswordResetNotification($token)
     {
-         $this->notify(new UserResetPasswordNotification($token));
+        $this->notify(new AdminResetPasswordNotification($token));
     }
+
+  
 }

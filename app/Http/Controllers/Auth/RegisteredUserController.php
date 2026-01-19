@@ -1,50 +1,76 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CompanyRegisterRequest;
+use App\Http\Requests\IndividualRegisterRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     */
-    public function create(): View
+    public function create()
     {
-        return view('auth.register');
+        return view("front.auth.create");
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        $formType = $request->input('form', 'individual');
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
+            if ($formType === 'individual') {
+                $data = app(IndividualRegisterRequest::class)->validated();
 
-        event(new Registered($user));
+                $dob = $data['dob_year'] . '-' . $data['dob_month'] . '-' . $data['dob_day'];
 
-        Auth::login($user);
+                $user = User::create([
+                    'type'       => 'individual',
+                    'first_name' => $data['first_name'],
+                    'last_name'  => $data['last_name'],
+                    'email'      => $data['email'],
+                    'password'   => Hash::make($data['password']),
+                    'dob'        => $dob,
+                    'gender'     => $data['gender'] ?? null,
+                    'phone'      => $data['phone'] ?? null,
+                ]);
 
-        return redirect(route('dashboard', absolute: false));
+            } else {
+                $data = app(CompanyRegisterRequest::class)->validated();
+
+                $user = User::create([
+                    'type'           => 'company',
+                    'company_name'   => $data['company_name'],
+                    'job_title'      => $data['job_title'] ?? null,
+                    'contact_person' => $data['contact_person'],
+                    'phone'          => $data['phone'] ?? null,
+                    'email'          => $data['email'],
+                    'password'       => Hash::make($data['password']),
+                ]);
+            }
+
+            event(new Registered($user));
+            Auth::login($user);
+
+            return redirect()->route('front.index');
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+          
+            return redirect()->back()
+                ->withErrors($e->validator, $formType)
+                ->withInput();
+
+        } catch (\Exception $e) {
+           
+            Log::error('Registration error: ' . $e->getMessage());
+
+            return redirect()->back()
+                ->with('error', 'Something went wrong. Please try again.')
+                ->withInput();
+        }
     }
 }
