@@ -1,189 +1,232 @@
- @extends('front.master')
- @section('content')
-     <section class="training2-section container" style="padding-top:140px;">
+@extends('front.master')
+@section('content')
+    <section class="training2-section container" style="padding-top:140px;">
 
-         <div class="row g-4 mb-4 d-flex flex-nowrap">
+        <div class="row g-4 mb-4 d-flex flex-nowrap">
 
-             <!-- Text Card -->
-             <div class="d-flex" style="flex: 0 0 50%;">
-                 <div class="training2-card flex-fill">
-                     <h4>Hikvision Professional Learning</h4>
-                     <p>
-                         Discover your full potential with our transformative training programs...
-                     </p>
-                 </div>
-             </div>
+            <!-- Text Card -->
+            <div class="d-flex" style="flex: 0 0 50%;">
+                <div class="training2-card flex-fill">
+                    <h4>{{ __('theme.training_title') }}</h4>
+                    <p>{{ __('theme.training_subtitle') }}</p>
+                </div>
+            </div>
 
-             <!-- Image Card -->
-             <div class="d-flex" style="flex: 0 0 50%;">
-                 <div class="training2-card image-card flex-fill">
-                     <img src="{{ asset('assets') }}/images/training10.png" alt="" class="img-cover">
-                 </div>
-             </div>
+            <!-- Image Card -->
+            <div class="d-flex" style="flex: 0 0 50%;">
+                <div class="training2-card image-card flex-fill">
+                    <img src="{{ asset('assets') }}/images/training10.png" alt="{{ __('theme.training_title') }}"
+                        class="img-cover">
+                </div>
+            </div>
 
-         </div>
+        </div>
 
+        <!-- Values Section -->
+        <div class="about2-values text-center mb-5">
+            <h2 class="mb-4" style="color: rgb(220, 94, 94);">{{ __('theme.training_values_title') }}</h2>
+        </div>
 
-         <!-- Values Section -->
-         <div class="about2-values text-center mb-5">
-             <h2 class="mb-4" style="color: rgb(220, 94, 94);">Professional Development</h2>
-         </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="value-box">
+                    <h4>{{ __('theme.training_value_1_title') }}</h4>
+                    <p>{{ __('theme.training_value_1_desc') }}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="value-box">
+                    <h4>{{ __('theme.training_value_2_title') }}</h4>
+                    <p>{{ __('theme.training_value_2_desc') }}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="value-box">
+                    <h4>{{ __('theme.training_value_3_title') }}</h4>
+                    <p>{{ __('theme.training_value_3_desc') }}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="value-box">
+                    <h4>{{ __('theme.training_value_4_title') }}</h4>
+                    <p>{{ __('theme.training_value_4_desc') }}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="value-box">
+                    <h4>{{ __('theme.training_value_5_title') }}</h4>
+                    <p>{{ __('theme.training_value_5_desc') }}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="value-box">
+                    <h4>{{ __('theme.training_value_6_title') }}</h4>
+                    <p>{{ __('theme.training_value_6_desc') }}</p>
+                </div>
+            </div>
+        </div>
 
-         <div class="row g-4">
-             <div class="col-md-4">
-                 <div class="value-box">
-                     <h4>Effective Use of Technology</h4>
-                     <p>Equip yourself with the skills and knowledge needed to effectively use Hikvision interactive
-                         displays in teaching and training. Learn how to integrate Hikvision’s advanced interactive tools
-                         into your lessons to make learning more engaging, dynamic, and impactful.</p>
-                 </div>
-             </div>
-             <div class="col-md-4">
-                 <div class="value-box">
-                     <h4>Improved Student Engagement</h4>
-                     <p>Discover how to create interactive, multimedia-rich learning experiences using Hikvision panels.
-                         Increase student engagement and motivation through tools that support collaboration, creativity,
-                         and active participation—leading to stronger learning outcomes.</p>
-                 </div>
-             </div>
-             <div class="col-md-4">
-                 <div class="value-box">
-                     <h4>Enhanced Collaboration</h4>
-                     <p>Learn how to facilitate collaborative learning activities with Hikvision’s multi-touch and
-                         multi-user capabilities. Students can work together on projects, share ideas, and collaborate in
-                         real-time, boosting teamwork and communication skills.</p>
-                 </div>
-             </div>
-             <div class="col-md-4">
-                 <div class="value-box">
-                     <h4>Personalized Learning</h4>
-                     <p>Learn how to design personalized learning experiences using Hikvision’s flexible digital tools.
-                         Tailor lessons to meet the unique needs, levels, and learning styles of each student—making
-                         instruction more adaptive and effective.</p>
-                 </div>
-             </div>
-             <div class="col-md-4">
-                 <div class="value-box">
-                     <h4>Enhancing Classroom Relevance</h4>
-                     <p>Discover how to bring real-world scenarios into the classroom using Hikvision interactive
-                         displays. Help students connect their learning to real-life applications, making lessons more
-                         meaningful and relevant to the world around them.</p>
-                 </div>
-             </div>
-             <div class="col-md-4">
-                 <div class="value-box">
-                     <h4>Adapting to Change</h4>
-                     <p>Education and technology are constantly evolving. Hikvision professional development helps
-                         teachers and institutions adapt to new tools, new methods, and new challenges—ensuring they
-                         continue to teach effectively in today’s fast-changing environment.</p>
-                 </div>
-             </div>
-         </div>
+    </section>
 
-     </section>
+    <section class="training-form-section container" style="padding-top:140px; padding-bottom:80px;">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg p-5">
 
-     <section class="training-form-section container" style="padding-top:140px; padding-bottom:80px;">
-         <div class="row justify-content-center">
-             <div class="col-lg-8">
-                 <div class="card shadow-lg p-5">
+                    <!-- Header -->
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold">{{ __('theme.training_form_title') }}</h2>
+                        <p class="text-muted fs-5">{{ __('theme.training_form_subtitle') }}</p>
+                    </div>
 
-                     <!-- Header -->
-                     <div class="text-center mb-4">
-                         <h2 class="fw-bold">Register for Training</h2>
-                         <p class="text-muted fs-5">Apply now for our training programs</p>
-                     </div>
+                    <!-- Success Message -->
+                    @if (session('success'))
+                        <div class="alert alert-success text-center">{{ session('success') }}</div>
+                    @endif
 
-                     <div class="d-flex justify-content-center mb-4">
-                         <div class="toggle-button contact-toggle">
-                             <input type="checkbox" id="toggleBtn">
-                             <label for="toggleBtn">
-                                 <span class="left">Individual User</span>
-                                 <span class="right">Company/School</span>
-                             </label>
-                         </div>
-                     </div>
-                     <hr>
+                    <!-- Error Message -->
+                    @if (session('error'))
+                        <div class="alert alert-danger text-center">{{ session('error') }}</div>
+                    @endif
 
-                     <!-- Form -->
-                     <div id="individualForm">
-                         <form>
-                             <div class="row mb-3">
-                                 <div class="col-md-6 mb-3 mb-md-0">
-                                     <label class="form-label">First Name</label>
-                                     <input type="text" class="form-control form-control-lg" placeholder="First Name">
-                                 </div>
-                                 <div class="col-md-6">
-                                     <label class="form-label">Last Name</label>
-                                     <input type="text" class="form-control form-control-lg" placeholder="Last Name">
-                                 </div>
-                             </div>
+                    <!-- Toggle Button -->
+                    <div class="text-center mb-4">
+                        <div class="toggle-button contact-toggle" dir="ltr">
+                            <input type="checkbox" id="toggleBtn">
+                            <label for="toggleBtn" class="d-flex justify-content-between">
+                                <span class="fw-bold fs-6">{{ __('theme.individual_user') }}</span>
+                                <span class="fw-bold fs-6">{{ __('theme.company_school') }}</span>
+                            </label>
+                        </div>
+                    </div>
+                    <hr>
 
-                             <div class="mb-3">
-                                 <label class="form-label">Email Address</label>
-                                 <input type="email" class="form-control form-control-lg" placeholder="Email Address">
-                             </div>
+                    <!-- Individual Form -->
+                    <div id="individualForm" style="{{ $errors->company->any() ? 'display:none' : '' }}">
+                        <form action="{{ route('front.trainee.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="form" value="individual">
 
-                             <div class="mb-4">
-                                 <label class="form-label">Enter Your Message</label>
-                                 <textarea class="form-control form-control-lg" rows="5" placeholder="Enter Your Message"></textarea>
-                             </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label class="form-label">{{ __('theme.first_name') }}</label>
+                                    <input type="text" name="first_name" class="form-control form-control-lg"
+                                        placeholder="{{ __('theme.first_name') }}" value="{{ old('first_name') }}">
+                                    @error('first_name', 'individual')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">{{ __('theme.last_name') }}</label>
+                                    <input type="text" name="last_name" class="form-control form-control-lg"
+                                        placeholder="{{ __('theme.last_name') }}" value="{{ old('last_name') }}">
+                                    @error('last_name', 'individual')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
 
-                             <button type="submit" class="btn btn-primary btn-lg w-100">Apply Now</button>
-                         </form>
-                     </div>
+                            <div class="mb-3">
+                                <label class="form-label">{{ __('theme.email_address') }}</label>
+                                <input type="email" name="email" class="form-control form-control-lg"
+                                    placeholder="{{ __('theme.email_address') }}" value="{{ old('email') }}">
+                                @error('email', 'individual')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
 
-                     <!-- // -->
-                     <div id="companyForm" style="display: none;">
-                         <form>
-                             <!-- Company / Department / Job -->
-                             <div class="row mb-3">
-                                 <div class="col-md-4 mb-3 mb-md-0">
-                                     <label class="form-label">Company / School / University</label>
-                                     <input type="text" class="form-control form-control-lg"
-                                         placeholder="Company / School / University">
-                                 </div>
-                                 <div class="col-md-4 mb-3 mb-md-0">
-                                     <label class="form-label">Department</label>
-                                     <input type="text" class="form-control form-control-lg" placeholder="Department">
-                                 </div>
-                                 <div class="col-md-4">
-                                     <label class="form-label">Job Title</label>
-                                     <input type="text" class="form-control form-control-lg" placeholder="Job Title">
-                                 </div>
-                             </div>
+                            <div class="mb-4">
+                                <label class="form-label">{{ __('theme.enter_message') }}</label>
+                                <textarea name="message" class="form-control form-control-lg" rows="5"
+                                    placeholder="{{ __('theme.enter_message') }}">{{ old('message') }}</textarea>
+                                @error('message', 'individual')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
 
-                             <!-- Name -->
-                             <div class="row mb-3">
-                                 <div class="col-md-6 mb-3 mb-md-0">
-                                     <label class="form-label">First Name</label>
-                                     <input type="text" class="form-control form-control-lg" placeholder="First Name">
-                                 </div>
-                                 <div class="col-md-6">
-                                     <label class="form-label">Last Name</label>
-                                     <input type="text" class="form-control form-control-lg" placeholder="Last Name">
-                                 </div>
-                             </div>
+                            <button type="submit"
+                                class="btn btn-primary btn-lg w-100">{{ __('theme.apply_now') }}</button>
+                        </form>
+                    </div>
 
-                             <!-- Email -->
-                             <div class="mb-3">
-                                 <label class="form-label">Email Address</label>
-                                 <input type="email" class="form-control form-control-lg" placeholder="Enter Email">
-                             </div>
+                    <!-- Company Form -->
+                    <div id="companyForm" style="{{ $errors->company->any() ? '' : 'display:none' }}">
+                        <form action="{{ route('front.trainee.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="form" value="company">
 
-                             <!-- Message -->
-                             <div class="mb-4">
-                                 <label class="form-label">Your Message</label>
-                                 <textarea class="form-control form-control-lg" rows="5" placeholder="Enter your message"></textarea>
-                             </div>
+                            <div class="row mb-3">
+                                <div class="col-md-4 mb-3 mb-md-0">
+                                    <label class="form-label">{{ __('theme.company_school_university') }}</label>
+                                    <input type="text" name="company_name" class="form-control form-control-lg"
+                                        placeholder="{{ __('theme.company_school_university') }}"
+                                        value="{{ old('company_name') }}">
+                                    @error('company_name', 'company')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-4 mb-3 mb-md-0">
+                                    <label class="form-label">{{ __('theme.department') }}</label>
+                                    <input type="text" name="department" class="form-control form-control-lg"
+                                        placeholder="{{ __('theme.department') }}" value="{{ old('department') }}">
+                                    @error('department', 'company')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">{{ __('theme.job_title') }}</label>
+                                    <input type="text" name="job_title" class="form-control form-control-lg"
+                                        placeholder="{{ __('theme.job_title') }}" value="{{ old('job_title') }}">
+                                    @error('job_title', 'company')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
 
-                             <!-- Submit Button -->
-                             <button type="submit" class="btn btn-primary btn-lg w-100">Apply Now</button>
-                         </form>
-                     </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label class="form-label">{{ __('theme.first_name') }}</label>
+                                    <input type="text" name="first_name" class="form-control form-control-lg"
+                                        placeholder="{{ __('theme.first_name') }}" value="{{ old('first_name') }}">
+                                    @error('first_name', 'company')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">{{ __('theme.last_name') }}</label>
+                                    <input type="text" name="last_name" class="form-control form-control-lg"
+                                        placeholder="{{ __('theme.last_name') }}" value="{{ old('last_name') }}">
+                                    @error('last_name', 'company')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
 
+                            <div class="mb-3">
+                                <label class="form-label">{{ __('theme.email_address') }}</label>
+                                <input type="email" name="email" class="form-control form-control-lg"
+                                    placeholder="{{ __('theme.email_address') }}" value="{{ old('email') }}">
+                                @error('email', 'company')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
 
-                 </div>
-             </div>
-         </div>
-     </section>
- @endsection
+                            <div class="mb-4">
+                                <label class="form-label">{{ __('theme.enter_message') }}</label>
+                                <textarea name="message" class="form-control form-control-lg" rows="5"
+                                    placeholder="{{ __('theme.enter_message') }}">{{ old('message') }}</textarea>
+                                @error('message', 'company')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <button type="submit"
+                                class="btn btn-primary btn-lg w-100">{{ __('theme.apply_now') }}</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection

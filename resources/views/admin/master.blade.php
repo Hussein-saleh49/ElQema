@@ -1,14 +1,20 @@
 <!doctype html>
 <html lang="en">
+
 @include('admin.partials.head')
 
-<body class="vertical  dark  ">
+<body class="vertical  light {{ LaravelLocalization::getCurrentLocale() == "ar" ? " light rtl" : "" }}  ">
     <div class="wrapper">
-        @include('admin.partials.navbar')
+      @include("admin.partials.navbar")
         @include('admin.partials.sidebar')
-       @yield("content")
-    </div> 
-    @include('admin.partials.scripts')
+        <!-- Layout container -->
+        <div class="layout-page">
+
+            <main role="main" class="main-content">
+                @yield('content')
+            </main> <!-- main -->
+        </div> <!-- .wrapper -->
+        @include('admin.partials.scripts')
 </body>
 
 </html>

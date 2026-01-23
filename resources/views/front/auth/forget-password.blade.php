@@ -1,17 +1,20 @@
 @extends('front.auth.master')
-@section('title', 'Forgot Password')
+@section('title', __('theme.forgot_password'))
 
-<!-- Auth Section -->
 <section class="auth-section">
     <div class="container">
 
+        <!-- Title -->
         <div class="row justify-content-center mb-5">
             <div class="col-12 text-center">
-                <h2 class="section-title">Forgot your password?</h2>
-                <p>
-                    No problem. Just let us know your email address and we will send you a password reset link.
-                </p>
+                <h2 class="section-title">{{ __('theme.forgot_title') }}</h2>
+                <p>{{ __('theme.forgot_subtitle') }}</p>
             </div>
+            <a href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale() === 'ar' ? 'en' : 'ar') }}"
+                class="btn btn-light btn-sm rounded-circle shadow-sm d-flex align-items-center justify-content-center"
+                style="width:40px; height:40px;">
+                <i class="bi bi-globe fs-5"></i>
+            </a>
         </div>
 
         <div class="auth-cards">
@@ -22,51 +25,43 @@
                     <i class="bi bi-shield-lock"></i>
                 </div>
 
-                <h5>Password Recovery</h5>
-                <p>
-                    Enter your registered email address and we’ll send you a secure link to reset your password.
-                </p>
+                <h5>{{ __('theme.password_recovery') }}</h5>
+                <p>{{ __('theme.password_recovery_desc') }}</p>
 
                 <a href="{{ route('login') }}" class="btn btn-primary mt-2">
-                    Back to Login
+                    {{ __('theme.back_to_login') }}
                 </a>
             </div>
 
-            <!-- Forgot Password Card -->
+            <!-- Reset Card -->
             <div class="auth-card login-card">
 
-                <!-- Session Status -->
                 <x-auth-session-status class="mb-4" :status="session('status')" />
 
-                <h5>Reset Password</h5>
-                <p>Please enter your email to receive the reset link.</p>
+                <h5>{{ __('theme.reset_password') }}</h5>
+                <p>{{ __('theme.reset_password_desc') }}</p>
 
                 <form method="POST" action="{{ route('password.email') }}">
                     @csrf
 
                     <div>
-                        <input
-                            type="email"
-                            name="email"
-                            value="{{ old('email') }}"
-                            class="form-control"
-                            placeholder="Email address"
-                            required
-                        >
+                        <input type="email" name="email" value="{{ old('email') }}" class="form-control"
+                            placeholder="{{ __('theme.email') }}" required>
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
 
                     <button type="submit" class="btn btn-primary">
-                        Send Reset Link
+                        {{ __('theme.send_reset_link') }}
                     </button>
                 </form>
 
                 <small class="d-block mt-3">
-                    <a href="{{ route('login') }}">Remember your password? Login</a>
+                    <a href="{{ route('login') }}">
+                        {{ __('theme.remember_password_login') }}
+                    </a>
                 </small>
 
             </div>
-
         </div>
     </div>
 </section>

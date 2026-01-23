@@ -1,67 +1,87 @@
- <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
 
-            <!-- Top -->
-            <div class="footer-top">
-                <!-- Left -->
-                <div class="footer-brand">
-                    <form class="footer-form">
-                        <input type="text" placeholder="Enter Your Name">
-                        <input type="email" placeholder="Enter Your Email">
-                        <button type="submit">
-                            <i class="bi bi-send"></i>
-                        </button>
-                    </form>
+        <!-- Top -->
+        <div class="footer-top">
+            <!-- Left -->
+            <div class="footer-brand">
 
-                    <h4 class="brand-title">AL-QEMMA</h4>
-                    <p class="brand-desc">
-                        Leadership and excellence in developing the educational process
-                        through providing smart and innovative technological solutions in
-                        the field of education.
-                    </p>
+                <form action="{{ route("front.subscribe.store") }}" method="POST" class="footer-form">
+                    @csrf
 
-                    <div class="social-icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-twitter-x"></i></a>
-                        <a href="#"><i class="bi bi-linkedin"></i></a>
-                    </div>
-                </div>
 
-                <!-- Links -->
-                <div class="footer-links">
-                    <div>
-                        <h6>About Us</h6>
-                        <a href="#">Services</a>
-                        <a href="#">Training</a>
-                        <a href="#">Education</a>
-                        <a href="#">Contact Us</a>
-                    </div>
+                    <!-- البريد الإلكتروني -->
+                    <input type="email" name="email" placeholder="{{ __('theme.footer_enter_email') }}"
+                        value="{{ old('email') }}">
+                    @error('email', 'subscriber')
+                        <span class="text-danger small">{{ $message }}</span>
+                    @enderror
 
-                    <div>
-                        <h6>Support</h6>
-                        <a href="#">Knowledge</a>
-                        <a href="#">Live Chat</a>
-                        <a href="#">Leadership</a>
-                        <a href="#">Privacy Policy</a>
-                    </div>
+                    <button type="submit">
+                        <i class="bi bi-send"></i>
+                    </button>
 
-                    <div>
-                        <h6>Jobs</h6>
-                        <a href="#">Our Team</a>
-                    </div>
+                  
+                    @if (session('success'))
+                        <div class="text-success mt-2">{{ session('success') }}</div>
+                    @endif
 
-                    <div>
-                        <h6>Horizon</h6>
-                        <a href="#">Smart Ok</a>
-                        <a href="#">HiVision</a>
-                    </div>
+                    @if (session('error'))
+                        <div class="text-danger mt-2">{{ session('error') }}</div>
+                    @endif
+                </form>
+
+
+
+                <h4 class="brand-title">{{ __('theme.footer_brand_title') }}</h4>
+                <p class="brand-desc">
+                    {{ __('theme.footer_brand_desc') }}
+                </p>
+
+                <div class="social-icons">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#"><i class="bi bi-linkedin"></i></a>
                 </div>
             </div>
 
-            <!-- Bottom -->
+            <!-- Links -->
+            <div class="footer-links">
+                <div>
+                    <h6>{{ __('theme.footer_about_us') }}</h6>
+                    <a href="{{ route("front.services") }}">{{ __('theme.footer_services') }}</a>
+                    <a href="{{ route("front.training") }}">{{ __('theme.footer_training') }}</a>
+                    <a href="{{ route("front.education") }}">{{ __('theme.footer_education') }}</a>
+                    <a href="{{ route("front.contacts") }}">{{ __('theme.footer_contact_us') }}</a>
+                </div>
 
+                <div>
+                    <h6>{{ __('theme.footer_support') }}</h6>
+                    <a href="#">{{ __('theme.footer_knowledge') }}</a>
+                    <a href="#">{{ __('theme.footer_live_chat') }}</a>
+                    <a href="#">{{ __('theme.footer_leadership') }}</a>
+                    <a href="#">{{ __('theme.footer_privacy_policy') }}</a>
+                </div>
 
+                <div>
+                    <h6>{{ __('theme.footer_jobs') }}</h6>
+                    <a href="#">{{ __('theme.footer_our_team') }}</a>
+                </div>
+
+                {{-- <div>
+                    <h6>{{ __('theme.footer_horizon') }}</h6>
+                    <a href="#">{{ __('theme.footer_smart_ok') }}</a>
+                    <a href="#">{{ __('theme.footer_hivision') }}</a>
+                </div> --}}
+            </div>
         </div>
-    </footer>
+
+        <!-- Bottom -->
+        <div class="footer-bottom text-center py-3">
+            &copy; {{ date('Y') }} {{ __('theme.footer_brand_title') }}. All rights reserved.
+        </div>
+
+    </div>
+</footer>

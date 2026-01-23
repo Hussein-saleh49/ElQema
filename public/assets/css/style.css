@@ -2,48 +2,95 @@
    RTL / LTR Direction
 ========================= */
 
+
 /* الافتراضي: LTR */
+/* =========================
+   Global Direction
+========================= */
+
 body[dir="ltr"] {
     direction: ltr;
     text-align: left;
 }
 
-/* للعربية: RTL */
 body[dir="rtl"] {
     direction: rtl;
     text-align: right;
 }
 
-/* Navbar */
+/* =========================
+   Navbar
+========================= */
+
 body[dir="rtl"] .navbar-nav.ms-auto {
     margin-left: 0 !important;
     margin-right: auto !important;
 }
+
 body[dir="ltr"] .navbar-nav.ms-auto {
     margin-left: auto !important;
     margin-right: 0 !important;
 }
 
-/* أي عناصر تتحرك أفقياً أو تحتاج قلب الاتجاه */
-body[dir="rtl"] .experience-box,
-body[dir="rtl"] .screen-1,
-body[dir="rtl"] .screen-2,
-body[dir="rtl"] .screen-3,
-body[dir="rtl"] .demo-btn {
-    left: auto !important;
-    right: initial !important; /* سيصبح على اليمين */
-}
+/* =========================
+   Absolute / Floating Items
+   (REAL FIX)
+========================= */
 
+/* ===== LTR ===== */
 body[dir="ltr"] .experience-box,
 body[dir="ltr"] .screen-1,
 body[dir="ltr"] .screen-2,
 body[dir="ltr"] .screen-3,
 body[dir="ltr"] .demo-btn {
-    left: initial !important;
-    right: auto !important; /* سيصبح على اليسار */
+    left: 0;
+    right: auto;
 }
 
-/* إذا عندك أي نصوص داخل كروت أو أي عناصر flex تحتاج قلب المحاذاة */
+/* ===== RTL ===== */
+body[dir="rtl"] .experience-box,
+body[dir="rtl"] .screen-1,
+body[dir="rtl"] .screen-2,
+body[dir="rtl"] .screen-3,
+body[dir="rtl"] .demo-btn {
+    right: 0;
+    left: auto;
+}
+
+/* =========================
+   TRANSFORM FIX (IMPORTANT)
+========================= */
+
+/* screen animations */
+
+body[dir="ltr"] .screen-1 {
+    transform: translateX(120px);
+}
+
+body[dir="rtl"] .screen-1 {
+    transform: translateX(-120px);
+}
+
+body[dir="ltr"] .screen-2 {
+    transform: translateX(220px);
+}
+
+body[dir="rtl"] .screen-2 {
+    transform: translateX(-220px);
+}
+
+body[dir="ltr"] .screen-3 {
+    transform: translateX(320px);
+}
+
+body[dir="rtl"] .screen-3 {
+    transform: translateX(-320px);
+}
+
+/* =========================
+   Cards Alignment
+========================= */
+
 body[dir="rtl"] .training-card-mini,
 body[dir="rtl"] .service-text-card,
 body[dir="rtl"] .why-card,
@@ -60,18 +107,22 @@ body[dir="ltr"] .customer-card {
     align-items: flex-start !important;
 }
 
-/* القوائم أو أي flex row */
-body[dir="rtl"] .d-flex,
-body[dir="rtl"] .row {
-    flex-direction: row-reverse !important;
+/* =========================
+   Flex (SAFE WAY)
+========================= */
+
+body[dir="rtl"] .d-flex:not(.row) {
+    flex-direction: row-reverse;
 }
 
-body[dir="ltr"] .d-flex,
-body[dir="ltr"] .row {
-    flex-direction: row !important;
+body[dir="ltr"] .d-flex:not(.row) {
+    flex-direction: row;
 }
 
-/* أي صور أو كروت تحتاج قلب float أو margin */
+/* =========================
+   Images / Margins
+========================= */
+
 body[dir="rtl"] .customer-card-img {
     margin-left: auto !important;
     margin-right: 0 !important;
@@ -699,9 +750,21 @@ body {
 /* ==== MOBILE DEVICES (<=576px) ==== */
 @media (max-width: 576px) {
 
-    /* Navbar */
     .navbar .navbar-nav {
+        flex-direction: column;
+        gap: 10px;
         text-align: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    /* Right side (dropdown + switcher) تبقى صف */
+    .navbar .d-flex.align-items-center.gap-2.ms-auto {
+        flex-direction: row !important; /* اجعلهم في صف */
+        gap: 5px;
+        justify-content: flex-end;
+        width: auto;
+        margin-top: 10px;
     }
 
     /* Hero */
@@ -2691,7 +2754,7 @@ body {
     padding: 30px;
 }
 
-/* Container للزر */
+/* Container للزر
 /* Container للزر */
 .toggle-button {
     position: relative;
@@ -2801,4 +2864,30 @@ body {
         height: 30px;
         top: 3px;
     }
+} 
+
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 32px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #1ebe5d;
 }

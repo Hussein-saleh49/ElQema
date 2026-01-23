@@ -2,8 +2,8 @@
 <html lang="en">
 @include('admin.auth.partials.head')
 
-<body class="dark ">
-   @yield("content")
+<body class="vertical  {{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'light rtl' : '' }}  ">
+    @yield('content')
     @include('admin.auth.partials.scripts')
 </body>
 

@@ -212,4 +212,30 @@
      }
      gtag('js', new Date());
      gtag('config', 'UA-56159088-1');
+
+
  </script>
+ <script>
+document.getElementById('add-feature-btn').addEventListener('click', function () {
+    const wrapper = document.getElementById('features-wrapper');
+
+    const div = document.createElement('div');
+    div.classList.add('mb-2', 'feature-item', 'd-flex', 'gap-2');
+
+    div.innerHTML = `
+        <input type="text"
+               name="product_features[]"
+               class="form-control"
+               placeholder="{{ __('keywords.enter_product_feature') }}">
+        <button type="button" class="btn btn-danger btn-sm remove-feature">×</button>
+    `;
+
+    wrapper.appendChild(div);
+});
+
+document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('remove-feature')) {
+        e.target.closest('.feature-item').remove();
+    }
+});
+</script>

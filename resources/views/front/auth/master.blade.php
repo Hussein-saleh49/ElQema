@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="{{ LaravelLocalization::getCurrentLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 
 @include('front.partials.head')
 
 <body>
 
-  
-
-   @yield("content")
- 
+   
+    @yield('content')
 
 
-   @include("front.partials.scripts")
+
+    @include('front.partials.scripts')
 
 </body>
 
