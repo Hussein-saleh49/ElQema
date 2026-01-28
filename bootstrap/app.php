@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AuthentcateAdmin;
+use App\Http\Middleware\GuestAdmin;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -13,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         //
-       
+
         $middleware->alias([
             /**** OTHER MIDDLEWARE ALIASES ****/
             'localize'              => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
@@ -21,7 +22,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'localeSessionRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
             'localeCookieRedirect'  => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
             'localeViewPath'        => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
-             "authenticateAdmin" => AuthentcateAdmin::class,
+            "authenticateAdmin"     => AuthentcateAdmin::class,
+            "guestAdmin"            => GuestAdmin::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

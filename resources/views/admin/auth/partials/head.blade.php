@@ -11,6 +11,7 @@
     <title>@yield("title")</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="{{ asset("assets-admin".$dir) }}/css/simplebar.css">
+    <link rel="icon" type="image/png" href="{{ asset("assets/images/favicon.png") }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Fonts CSS -->

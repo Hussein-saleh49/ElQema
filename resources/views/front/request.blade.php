@@ -1,5 +1,5 @@
 @extends('front.master')
-
+@section('title', __("keywords.demo_requests"))
 @section('content')
 
     <section class="request-demo-section">

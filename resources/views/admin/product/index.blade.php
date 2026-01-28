@@ -1,4 +1,5 @@
 @extends('admin.master')
+@section("title",__("keywords.products"))
 
 @section('content')
 <div class="container my-4">
@@ -44,7 +45,7 @@
                                         @endforelse
                                     </ul>
                                 </td>
-                                <td>${{ number_format($product->price, 2) }}</td>
+                                <td>£{{ number_format($product->price, 2) }}</td>
                                 <td>{{ $product->category?->name ?? __('keywords.not_assigned') }}</td>
                                 <td>{{ $product->brand?->name ?? __('keywords.not_assigned') }}</td>
                                 <td>

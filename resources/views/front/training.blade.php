@@ -1,4 +1,5 @@
 @extends('front.master')
+@section("title",__("keywords.training "))
 @section('content')
     <section class="training2-section container" style="padding-top:140px;">
 
@@ -89,16 +90,7 @@
                         <div class="alert alert-danger text-center">{{ session('error') }}</div>
                     @endif
 
-                    <!-- Toggle Button -->
-                    <div class="text-center mb-4">
-                        <div class="toggle-button contact-toggle" dir="ltr">
-                            <input type="checkbox" id="toggleBtn">
-                            <label for="toggleBtn" class="d-flex justify-content-between">
-                                <span class="fw-bold fs-6">{{ __('theme.individual_user') }}</span>
-                                <span class="fw-bold fs-6">{{ __('theme.company_school') }}</span>
-                            </label>
-                        </div>
-                    </div>
+                    <x-toggle-button></x-toggle-button>
                     <hr>
 
                     <!-- Individual Form -->

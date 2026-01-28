@@ -1,5 +1,5 @@
 @extends('admin.master')
-
+@section("title",__("keywords.trainees"))
 @section('content')
 <div class="container my-4">
     <div class="card shadow-sm rounded-3">

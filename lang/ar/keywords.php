@@ -115,7 +115,7 @@ return [
     'delete'                  => 'حذف',
     'confirm_delete'          => 'هل أنت متأكد من حذف هذا المنتج؟',
     'no_products_yet'         => 'لا توجد منتجات بعد!',
-    "product_details"         => "تفاصيل المنتجات",
+    "product_details"         => "تفاصيل المنتج",
     "back"                    => "رجوع",
 
     'sections'                => 'الأقسام',
@@ -186,7 +186,15 @@ return [
     'view'                    => 'عرض',
     'delete'                  => 'حذف',
     'back'                    => 'عودة',
-    'processed' => 'تمت المعالجة',
-    'pending' => 'قيد الانتظار',
+    'processed'               => 'تمت المعالجة',
+    'pending'                 => 'قيد الانتظار',
+    "subscribers"             => "المشتركين",
+    "trainees"                => "طلبات التدريب",
+    "created_at"              => "تم الانشاء",
+    "add_feature"             => " أضف ميزه للمنتج",
+    "no_thumbnails"           => "لا صور مصغره",
+    "thumbnails"              => " صور مصغره",
+    "training "               => "التدريب",
+    "education"               => "التعليم",
 
 ];

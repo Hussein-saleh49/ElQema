@@ -1,4 +1,5 @@
 @extends('front.master')
+@section("title",__("keywords.services"))
 @section('services-activation', 'active')
 @section('content')
     <!-- Services Section -->
@@ -17,7 +18,7 @@
                                 <p>{{ substr($service->description, 0, 100) . (strlen($service->description) > 100 ? '...' : '') }}
                                 </p>
 
-                                <a href="#" class="btn btn-primary btn-sm">{{ __('theme.read_more') }}</a>
+                                <a href="{{ route("front.learn") }}" class="btn btn-primary btn-sm">{{ __('theme.read_more') }}</a>
                             </div>
                         </div>
                     </div>

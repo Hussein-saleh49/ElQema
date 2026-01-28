@@ -1,5 +1,5 @@
 @extends('admin.master')
-
+@section("title",__("keywords.services"))
 @section('content')
     <div class="container my-4">
 
@@ -55,7 +55,7 @@
 
                                     <td>
                                         <span class="{{ $service->is_active ? 'text-success' : 'text-danger' }}">
-                                            {{ $service->is_active ? __('services.active') : __('services.inactive') }}
+                                            {{ $service->is_active ? __("keywords.active") : __("keywords.inactive") }}
                                         </span>
                                     </td>
 

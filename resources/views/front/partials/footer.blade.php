@@ -7,7 +7,7 @@
             <!-- Left -->
             <div class="footer-brand">
 
-                <form action="{{ route("front.subscribe.store") }}" method="POST" class="footer-form">
+                <form action="{{ route('front.subscribe.store') }}" method="POST" class="footer-form">
                     @csrf
 
 
@@ -22,7 +22,7 @@
                         <i class="bi bi-send"></i>
                     </button>
 
-                  
+
                     @if (session('success'))
                         <div class="text-success mt-2">{{ session('success') }}</div>
                     @endif
@@ -38,23 +38,51 @@
                 <p class="brand-desc">
                     {{ __('theme.footer_brand_desc') }}
                 </p>
+                @php
+                    $settings = App\Models\setting::all();
+                @endphp
 
                 <div class="social-icons">
-                    <a href="#"><i class="bi bi-facebook"></i></a>
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-                    <a href="#"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                    @forelse ($settings as $setting)
+                        @if (!empty($setting->facebook))
+                            <a href="{{ $setting->facebook }}" target="_blank">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                        @endif
+
+                        @if (!empty($setting->instagram))
+                            <a href="{{ $setting->instagram }}" target="_blank">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                        @endif
+
+                        @if (!empty($setting->tiktok))
+                            <a href="{{ $setting->tiktok }}" target="_blank">
+                                <i class="bi bi-tiktok"></i>
+                            </a>
+                        @endif
+
+                        @if (!empty($setting->youtube))
+                            <a href="{{ $setting->youtube }}" target="_blank">
+                                <i class="bi bi-youtube"></i>
+                            </a>
+                        @endif
+                    @empty
+                        
+                        <p class="text-muted">No social links available</p>
+                    @endforelse
                 </div>
+
             </div>
 
             <!-- Links -->
             <div class="footer-links">
                 <div>
                     <h6>{{ __('theme.footer_about_us') }}</h6>
-                    <a href="{{ route("front.services") }}">{{ __('theme.footer_services') }}</a>
-                    <a href="{{ route("front.training") }}">{{ __('theme.footer_training') }}</a>
-                    <a href="{{ route("front.education") }}">{{ __('theme.footer_education') }}</a>
-                    <a href="{{ route("front.contacts") }}">{{ __('theme.footer_contact_us') }}</a>
+                    <a href="{{ route('front.services') }}">{{ __('theme.footer_services') }}</a>
+                    <a href="{{ route('front.training') }}">{{ __('theme.footer_training') }}</a>
+                    <a href="{{ route('front.education') }}">{{ __('theme.footer_education') }}</a>
+                    <a href="{{ route('front.contacts') }}">{{ __('theme.footer_contact_us') }}</a>
                 </div>
 
                 <div>

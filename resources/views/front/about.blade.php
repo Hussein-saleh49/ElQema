@@ -1,4 +1,6 @@
 @extends('front.master')
+@section("about-activation","active ")
+@section("title",__("theme.About Us"))
 @section('content')
 <!-- About Section -->
 <section class="about2-section container" style="padding-top:140px">
@@ -55,7 +57,7 @@
                 <img src="{{ asset('assets') }}/images/about3.png" alt="" class="img-fluid">
 
                 <!-- زر Request a Demo -->
-                <a href="#" class="btn btn-primary position-absolute demo-btn">
+                <a href="{{ route("front.request") }}" class="btn btn-primary position-absolute demo-btn">
                     {{ __('theme.request_demo') }}
                 </a>
             </div>
@@ -115,7 +117,7 @@
             <p>{{ __('theme.partnership_text_3') }}</p>
         </div>
 
-        <div class="col-lg-6 position-relative text-center mt-1" style="height: 400px;">
+        <div class="col-lg-6 position-relative text-center mt-1 partnership-screens" style="height: 400px;">
             <img src="{{ asset('assets') }}/images/training1.png" class="screen-1 position-absolute" alt="">
             <img src="{{ asset('assets') }}/images/training2.png" class="screen-2 position-absolute" alt="">
             <img src="{{ asset('assets') }}/images/training3.png" class="screen-3 position-absolute" alt="">

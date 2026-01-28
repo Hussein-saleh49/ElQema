@@ -1,4 +1,5 @@
 @extends('front.master')
+@section("title",__("theme.learn_more"))
 @section('content')
     <!-- ===================== Learn More Section ===================== -->
     <section class="learn-more-section container" style="padding-top:140px;">

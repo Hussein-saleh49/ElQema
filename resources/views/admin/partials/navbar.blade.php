@@ -26,23 +26,23 @@
             </a>
         </li>
 
-        <!-- Shortcuts Modal -->
-        <li class="nav-item">
-            <a class="nav-link text-muted my-2" href="#" data-toggle="modal" data-target=".modal-shortcut">
-                <span class="fe fe-grid fe-16"></span>
-            </a>
-        </li>
+            {{-- <!-- Shortcuts Modal -->
+            <li class="nav-item">
+                <a class="nav-link text-muted my-2" href="#" data-toggle="modal" data-target=".modal-shortcut">
+                    <span class="fe fe-grid fe-16"></span>
+                </a>
+            </li> --}}  
 
-        <!-- Notifications Modal -->
+        {{-- <!-- Notifications Modal -->
         <li class="nav-item nav-notif">
             <a class="nav-link text-muted my-2" href="#" data-toggle="modal" data-target=".modal-notif">
                 <span class="fe fe-bell fe-16"></span>
                 <span class="dot dot-md bg-success"></span>
             </a>
-        </li>
+        </li> --}}
 
         <!-- User Dropdown -->
-        <li class="nav-item dropdown">
+        {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink"
                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="avatar avatar-sm mt-2">
@@ -55,6 +55,6 @@
                 <a class="dropdown-item" href="#">{{ __('keywords.settings') }}</a>
                 <a class="dropdown-item" href="#">{{ __('keywords.activities') }}</a>
             </div>
-        </li>
+        </li> --}}
     </ul>
 </nav>

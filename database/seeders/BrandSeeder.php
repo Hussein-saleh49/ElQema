@@ -1,9 +1,7 @@
 <?php
-
 namespace Database\Seeders;
 
 use App\Models\Brand;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BrandSeeder extends Seeder
@@ -14,11 +12,18 @@ class BrandSeeder extends Seeder
     public function run(): void
     {
         //
-           $data = ["electronics","cabels","scrrens"];
-       foreach($data as $element){
-        Brand::create([
-            "name" => $element
-        ]);
-       }
+        $data = [
+            'Intel', 'AMD', 'NVIDIA', 'ASUS', 'MSI', 'Gigabyte', 'ASRock',
+            'Corsair', 'Kingston', 'Samsung', 'Western Digital', 'Seagate', 'Crucial',
+            'Razer', 'Logitech', 'SteelSeries', 'HyperX', 'Redragon', 'Cooler Master', 'Thermaltake', 'NZXT',
+            'Dell', 'LG', 'BenQ', 'AOC',
+            'TP-Link', 'UGREEN', 'Anker', 'Baseus',
+            'HP', 'Canon', 'Epson', 'Brother',
+        ];
+        foreach ($data as $element) {
+            Brand::create([
+                "name" => $element,
+            ]);
+        }
     }
 }

@@ -1,4 +1,5 @@
 @extends('admin.master')
+@section("title",__("keywords.demo_requests"))
 
 @section('content')
 <div class="container my-4">

@@ -23,6 +23,8 @@
 
          // تحديث عرض الفورم عند التغيير
          function updateFormDisplay() {
+             if (!toggle || !individualForm || !companyForm) return; // التأكد من وجود العناصر
+
              if (toggle.checked) {
                  individualForm.style.display = 'none';
                  companyForm.style.display = 'block';
@@ -33,22 +35,23 @@
          }
 
          // عند التغيير
-         toggle.addEventListener('change', updateFormDisplay);
+         toggle?.addEventListener('change', updateFormDisplay);
 
          // عند الضغط على زر الفردي
-         submitBtnIndividual.addEventListener('click', function() {
-             individualForm.querySelector('form').submit();
+         submitBtnIndividual?.addEventListener('click', function() {
+             individualForm?.querySelector('form')?.submit();
          });
 
          // عند الضغط على زر الشركة
-         submitBtnCompany.addEventListener('click', function() {
-             companyForm.querySelector('form').submit();
+         submitBtnCompany?.addEventListener('click', function() {
+             companyForm?.querySelector('form')?.submit();
          });
 
          // ضبط العرض حسب الـ old value بعد reload
          updateFormDisplay();
      });
  </script>
+
 
 
  <!-- Thumbnails Scroll + Heart JS -->
@@ -83,6 +86,21 @@
              btn.addEventListener('click', function() {
                  this.classList.toggle('active');
              });
+         });
+     });
+ </script>
+ <script>
+     document.querySelectorAll('.thumb-img').forEach(img => {
+         img.addEventListener('click', function() {
+
+             const mainImage = document.getElementById('mainProductImage');
+
+             // تغيير الصورة الكبيرة
+             mainImage.src = this.dataset.image;
+
+             // active effect
+             document.querySelectorAll('.thumb-img').forEach(i => i.classList.remove('active'));
+             this.classList.add('active');
          });
      });
  </script>

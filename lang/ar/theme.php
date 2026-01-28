@@ -440,5 +440,10 @@ return [
     'confirm_new_password'         => 'تأكيد كلمة المرور الجديدة',
 
     'reset_password_button'        => 'إعادة تعيين كلمة المرور',
-
+    "apply_filter" => "فلتره",
+    "About Us"  => "من نحن",
+    "cart" => "عربه التسوق",
+    "Pay Now" => "ادفع الان",
+    "subtotal" => "باقى الحساب",
+    "similar_products" => "منتجات ذات صلة",
 ];

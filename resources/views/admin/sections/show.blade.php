@@ -1,4 +1,5 @@
 @extends('admin.master')
+@section("title",__("keywords.view"))
 
 @section('content')
 <div class="container-fluid my-4">

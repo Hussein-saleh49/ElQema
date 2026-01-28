@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 class CartController extends Controller
 {
     // جلب السلة للمستخدم أو الجلسة
-    protected function getCart()
+    public function getCart()
     {
         if (Auth::check()) {
             return Cart::firstOrCreate(['user_id' => Auth::id()]);

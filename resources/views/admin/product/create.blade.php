@@ -1,5 +1,5 @@
 @extends('admin.master')
-
+@section('title', __('keywords.add_new'))
 @section('content')
     <div class="container-fluid my-4">
 
@@ -56,6 +56,7 @@
                             </select>
                             <x-empty-alert title="category"></x-empty-alert>
                         </div>
+
 
                         <!-- Brand -->
                         <div class="col-md-6">

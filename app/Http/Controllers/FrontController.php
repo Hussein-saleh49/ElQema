@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Section;
 use App\Models\Service;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -83,7 +84,7 @@ class FrontController extends Controller
     public function accessories()
     {
         $category = Category::where("name", "cabels_accessories")->first();
-        $products = Product::where("category_id", $category->id)->paginate(12);
+        $products = Product::where("category_id", $category->id)->paginate(10);
 
         return view("front.accessories", get_defined_vars());
     }
@@ -101,7 +102,8 @@ class FrontController extends Controller
     }
     public function contacts()
     {
-        return view("front.contacts");
+        $settings = Setting::all();
+        return view("front.contacts",get_defined_vars());
     }
     public function request()
     {

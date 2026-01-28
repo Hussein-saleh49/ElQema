@@ -1,4 +1,5 @@
 @extends('front.master')
+@section('title', __('keywords.products'))
 @section('products-activation', 'active')
 @section('content')
     <section class="shop-board-section container">
@@ -8,21 +9,35 @@
             </div>
         @endif
 
-
         <div class="row g-4 mb-4">
             <div class="col-lg-12">
-                <div class="collection-card">
-                    <div>
-                        <h5 class="fw-bold">{{ __('theme.collection_boards') }}</h5>
+                <div class="feature-card position-relative d-flex align-items-center">
+
+                    <!-- النص -->
+                    <div class="feature-content">
+                        <h5 class="fw-bold main-address">{{ __('theme.collection_boards') }}</h5>
                         <p class="text-muted small">{{ __('theme.collection_boards_desc') }}</p>
+                      
+                    </div>
+
+                    <!-- الصور -->
+                    <div class="feature-images">
+
+                        <img src="{{ asset('assets/images/training3.png') }}" class="feature-image feature-img-1"
+                            alt="image 1">
+                        <img src="{{ asset('assets/images/training2.png') }}" class="feature-image feature-img-2"
+                            alt="image 2">
+                        <img src="{{ asset('assets/images/training1.png') }}" class="feature-image feature-img-3"
+                            alt="image 3">
 
                     </div>
-                    <img src="{{ asset('assets') }}/images/static.jpg" alt="{{ __('theme.collection_boards') }}"
-                        style="width: 40%; height: 40%; object-fit: cover;">
 
                 </div>
             </div>
         </div>
+
+
+
         <div class="row g-4 mb-4">
 
             @if ($products->count() > 0)
@@ -52,16 +67,21 @@
                                     {{ __('theme.price') }}: {{ number_format($product->price) }} EGP
                                 </p>
 
-                                <div class="d-flex gap-2 mt-3">
+                                <div class="d-flex align-items-center gap-2 gap-sm-3 mt-3 flex-wrap">
                                     <a href="{{ route('front.productDetails', $product) }}"
-                                        class="btn btn-primary btn-sm">{{ __('theme.view_details') }}</a>
-                                    <form action="{{ route('front.cart.add', $product) }}" method="POST"
-                                        style="display: inline">
+                                        class="btn btn-primary btn-sm btn-sm-sm">
+                                        {{ __('theme.view_details') }}
+                                    </a>
+
+                                    <form action="{{ route('front.cart.add', $product) }}" method="POST" class="m-0">
                                         @csrf
-                                        <button type="submit"
-                                            class="btn btn-outline-secondary btn-sm">{{ __('theme.add_to_cart') }}</button>
+                                        <button type="submit" class="btn btn-outline-secondary btn-sm btn-sm-sm">
+                                            {{ __('theme.add_to_cart') }}
+                                        </button>
                                     </form>
                                 </div>
+
+
                             </div>
 
                             <!-- صورة المنتج -->

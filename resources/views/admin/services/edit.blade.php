@@ -1,5 +1,5 @@
 @extends('admin.master')
-
+@section("title",__("keywords.edit"))
 @section('content')
 <div class="container-fluid my-4">
 

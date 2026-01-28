@@ -1,138 +1,3 @@
-/* =========================
-   RTL / LTR Direction
-========================= */
-
-
-/* الافتراضي: LTR */
-/* =========================
-   Global Direction
-========================= */
-
-body[dir="ltr"] {
-    direction: ltr;
-    text-align: left;
-}
-
-body[dir="rtl"] {
-    direction: rtl;
-    text-align: right;
-}
-
-/* =========================
-   Navbar
-========================= */
-
-body[dir="rtl"] .navbar-nav.ms-auto {
-    margin-left: 0 !important;
-    margin-right: auto !important;
-}
-
-body[dir="ltr"] .navbar-nav.ms-auto {
-    margin-left: auto !important;
-    margin-right: 0 !important;
-}
-
-/* =========================
-   Absolute / Floating Items
-   (REAL FIX)
-========================= */
-
-/* ===== LTR ===== */
-body[dir="ltr"] .experience-box,
-body[dir="ltr"] .screen-1,
-body[dir="ltr"] .screen-2,
-body[dir="ltr"] .screen-3,
-body[dir="ltr"] .demo-btn {
-    left: 0;
-    right: auto;
-}
-
-/* ===== RTL ===== */
-body[dir="rtl"] .experience-box,
-body[dir="rtl"] .screen-1,
-body[dir="rtl"] .screen-2,
-body[dir="rtl"] .screen-3,
-body[dir="rtl"] .demo-btn {
-    right: 0;
-    left: auto;
-}
-
-/* =========================
-   TRANSFORM FIX (IMPORTANT)
-========================= */
-
-/* screen animations */
-
-body[dir="ltr"] .screen-1 {
-    transform: translateX(120px);
-}
-
-body[dir="rtl"] .screen-1 {
-    transform: translateX(-120px);
-}
-
-body[dir="ltr"] .screen-2 {
-    transform: translateX(220px);
-}
-
-body[dir="rtl"] .screen-2 {
-    transform: translateX(-220px);
-}
-
-body[dir="ltr"] .screen-3 {
-    transform: translateX(320px);
-}
-
-body[dir="rtl"] .screen-3 {
-    transform: translateX(-320px);
-}
-
-/* =========================
-   Cards Alignment
-========================= */
-
-body[dir="rtl"] .training-card-mini,
-body[dir="rtl"] .service-text-card,
-body[dir="rtl"] .why-card,
-body[dir="rtl"] .customer-card {
-    text-align: right !important;
-    align-items: flex-end !important;
-}
-
-body[dir="ltr"] .training-card-mini,
-body[dir="ltr"] .service-text-card,
-body[dir="ltr"] .why-card,
-body[dir="ltr"] .customer-card {
-    text-align: left !important;
-    align-items: flex-start !important;
-}
-
-/* =========================
-   Flex (SAFE WAY)
-========================= */
-
-body[dir="rtl"] .d-flex:not(.row) {
-    flex-direction: row-reverse;
-}
-
-body[dir="ltr"] .d-flex:not(.row) {
-    flex-direction: row;
-}
-
-/* =========================
-   Images / Margins
-========================= */
-
-body[dir="rtl"] .customer-card-img {
-    margin-left: auto !important;
-    margin-right: 0 !important;
-}
-
-body[dir="ltr"] .customer-card-img {
-    margin-left: 0 !important;
-    margin-right: auto !important;
-}
-
 /* =====================
    Global / Body
 ===================== */
@@ -179,30 +44,29 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo */
+
 .navbar-brand {
     font-weight: 700;
     color: #d9534f;
     font-size: 1.5rem;
 }
 
-/* Navbar Links */
+
 .navbar .nav-link {
     font-weight: 500;
     color: #333;
     padding: 8px 12px;
     display: inline-block;
-    position: relative; /* ضروري للـ pseudo-element */
+    position: relative;
     transition: color 0.3s ease;
 }
 
-/* Hover Effect */
+
 .navbar .nav-link:hover {
-    color: #0d6efd;  
+    color: #0d6efd;
     text-decoration: none;
 }
 
-/* Active Link - تأثير خط متحرك */
 .navbar .nav-link::after {
     content: '';
     position: absolute;
@@ -238,7 +102,7 @@ body {
     border-radius: 24px;
 }
 
-/* Hero Animation */
+
 .hero-text-animate {
     opacity: 0;
     transform: translateY(50px);
@@ -261,9 +125,8 @@ body {
     transform: scale(1);
 }
 
-/* =====================
-   Section Titles
-===================== */
+
+
 .section-title {
     text-align: center;
     font-weight: 700;
@@ -278,18 +141,16 @@ body {
 .btn-primary {
     background: linear-gradient(90deg, #2E1780 0%, #15063B 100%);
     border: none;
-    /* لأن عندنا gradient مش محتاج border تقليدي */
+
     border-radius: 12px;
     padding: 10px 25px;
     font-weight: 500;
     color: #fff;
-    /* نص أبيض على gradient */
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
     filter: brightness(1.1);
-    /* يكبر الإضاءة شوية عند hover */
     cursor: pointer;
 }
 
@@ -327,7 +188,7 @@ body {
     border-radius: 24px;
     overflow: hidden;
     background: none;
-    /* box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18); */
+
 }
 
 
@@ -356,105 +217,6 @@ body {
     background: linear-gradient(123deg,
             rgba(193, 229, 216, 0.55),
             rgba(255, 255, 255, 0.35));
-}
-
-/* =====================
-   Training Section – Smooth Integrated Edges
-===================== */
-.training-section {
-    position: relative;
-    background: linear-gradient(135deg,
-            rgba(166, 203, 239, 0.45),
-            rgba(79, 163, 255, 0.45));
-    padding: 80px 40px;
-    border-radius: 0;
-    overflow: hidden;
-}
-
-.training-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center,
-            rgba(255, 255, 255, 0.15) 0%,
-            rgba(255, 255, 255, 0.05) 45%,
-            rgba(255, 255, 255, 0) 75%);
-    pointer-events: none;
-}
-
-.training-section>.container {
-    position: relative;
-    z-index: 2;
-}
-
-.training-section h2 {
-    color: #000;
-}
-
-.training-section p {
-    color: #333;
-}
-
-/* Screens */
-.training-screens {
-    position: relative;
-    height: 320px;
-    max-width: 420px;
-    filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.18));
-}
-
-.training-screens .screen {
-    width: 200px;
-    margin-top: 50px;
-    border-radius: 16px;
-    position: absolute;
-    transition: all 0.3s ease;
-}
-
-
-/* Mini Cards */
-.training-card-mini {
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    /* عمودي: أيقونة فوق نص */
-    align-items: flex-start;
-    /* محاذاة لليسار */
-    text-align: left;
-    gap: 10px;
-    padding: 16px 12px;
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.35),
-        0 12px 30px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-}
-
-.training-card-mini:hover {
-    transform: translateY(-4px);
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.45),
-        0 18px 40px rgba(0, 0, 0, 0.12);
-}
-
-.training-card-mini p {
-    font-size: 0.8rem;
-    color: #333;
-    font-weight: 500;
-}
-
-.training-card-mini .icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    background: #e9f2ff;
-    color: #2c7be5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 8px;
-    /* مسافة بين الأيقونة والنص */
 }
 
 
@@ -533,14 +295,14 @@ body {
     padding: 0 20px;
 }
 
-/* Top */
+
 .footer-top {
     display: grid;
     grid-template-columns: 1.2fr 2fr;
     gap: 60px;
 }
 
-/* Brand */
+
 .footer-brand {
     max-width: 420px;
 }
@@ -588,7 +350,7 @@ body {
     color: #aaa;
 }
 
-/* Social */
+
 .social-icons {
     display: flex;
     gap: 12px;
@@ -612,7 +374,7 @@ body {
     border-color: #6c63ff;
 }
 
-/* Links */
+
 .footer-links {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -636,7 +398,7 @@ body {
     color: #fff;
 }
 
-/* Bottom */
+
 .footer-bottom {
     border-top: 1px solid #222;
     margin-top: 50px;
@@ -653,7 +415,7 @@ body {
             rgba(166, 203, 239, 0.18));
 }
 
-/* Header */
+
 .section-header h2 {
     font-size: 38px;
     font-weight: 800;
@@ -662,7 +424,7 @@ body {
 
 .section-header h2 span {
     color: #000;
-    /* كله أسود */
+
 }
 
 .section-header p {
@@ -673,14 +435,14 @@ body {
     line-height: 1.7;
 }
 
-/* Grid */
+
 .why-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 26px;
 }
 
-/* Card */
+
 .why-card {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
@@ -696,7 +458,7 @@ body {
     box-shadow: 0 22px 50px rgba(0, 0, 0, 0.18);
 }
 
-/* Icon */
+
 .why-card .icon {
     width: 68px;
     height: 68px;
@@ -710,7 +472,7 @@ body {
     margin: 0 auto 20px;
 }
 
-/* Title */
+
 .why-card h5 {
     font-size: 18px;
     font-weight: 700;
@@ -718,7 +480,7 @@ body {
     color: #000;
 }
 
-/* Text */
+
 .why-card p {
     font-size: 14.5px;
     color: #222;
@@ -738,7 +500,6 @@ body {
 
 .icon img {
     width: 20px;
-    /* نفس حجم أيقونة Bootstrap */
     height: 20px;
     object-fit: contain;
 }
@@ -758,16 +519,17 @@ body {
         margin: 0 auto;
     }
 
-    /* Right side (dropdown + switcher) تبقى صف */
+
     .navbar .d-flex.align-items-center.gap-2.ms-auto {
-        flex-direction: row !important; /* اجعلهم في صف */
+        flex-direction: row !important;
+
         gap: 5px;
         justify-content: flex-end;
         width: auto;
         margin-top: 10px;
     }
 
-    /* Hero */
+
     .hero-text-animate {
         text-align: center;
     }
@@ -778,13 +540,13 @@ body {
         margin-top: 20px;
     }
 
-    /* Section titles */
+
     .section-title {
         font-size: 1.4rem;
         margin: 30px 0 20px;
     }
 
-    /* Service cards (Featured Products) */
+
     .row.g-4>.col-6 {
         flex: 0 0 50%;
         max-width: 50%;
@@ -819,22 +581,6 @@ body {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
-    }
-
-    /* Training images */
-    .screen-1,
-    .screen-2,
-    .screen-3 {
-        position: relative;
-        inset: auto;
-        margin: 10px auto;
-        width: 85%;
-    }
-
-    /* Training cards */
-    .row.g-3 .col-4 {
-        flex: 0 0 100%;
-        max-width: 100%;
     }
 
     /* Customer cards */
@@ -881,19 +627,6 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* Training */
-    .screen-1 {
-        left: 120px;
-    }
-
-    .screen-2 {
-        left: 40px;
-    }
-
-    .screen-3 {
-        left: 0;
-    }
-
     /* Footer */
     .footer-top {
         grid-template-columns: 1fr;
@@ -922,10 +655,10 @@ body {
 
 .shop-page {
     padding-top: 120px;
-    /* عشان navbar fixed */
+
 }
 
-/* ===== Shop Hero ===== */
+
 .shop-hero {
     text-align: center;
     padding: 60px 0 40px;
@@ -942,7 +675,7 @@ body {
     color: #666;
 }
 
-/* ===== Collection Cards ===== */
+
 .collection-card {
     background: #ffffff;
     border-radius: 20px;
@@ -962,11 +695,11 @@ body {
 
 .collection-card img {
     width: 180px;
-    /* حجم الصورة */
+
     height: 180px;
-    /* ارتفاع الصورة */
+
     object-fit: cover;
-    /* لتجنب تشويه الصورة */
+
     border-radius: 10px;
 }
 
@@ -983,7 +716,7 @@ body {
     object-fit: contain;
 }
 
-/* ===== Filter Box ===== */
+
 .filter-box {
     background: #ffffff;
     border-radius: 18px;
@@ -998,7 +731,6 @@ body {
 .filter-option {
     display: flex;
     justify-content: space-between;
-    /* نص على اليسار، checkbox على اليمين */
     align-items: center;
     margin-bottom: 12px;
 }
@@ -1013,11 +745,11 @@ body {
 .filter-box input[type="checkbox"] {
     margin: 0;
     transform: scale(1.5);
-    /* 1.5 يعني 150% من الحجم الأصلي */
+
 }
 
 
-/* ===== Product Cards ===== */
+
 .product-card {
     background: #ffffff;
     border-radius: 20px;
@@ -1025,7 +757,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* توسيط أفقي */
+
     text-align: center;
     transition: all 0.35s ease;
 }
@@ -1052,14 +784,14 @@ body {
     font-size: 12px;
 }
 
-/* ===== Price ===== */
+
 .price {
     font-weight: 700;
     color: #1c78d5;
     font-size: 15px;
 }
 
-/* ===== Add To Cart Button ===== */
+
 .btn-add {
     background: linear-gradient(90deg, #2E1780 0%, #15063B 100%);
     border: none;
@@ -1070,7 +802,7 @@ body {
     color: #fff;
     transition: all 0.3s ease;
     margin-left: 10px;
-    /* زيادة المسافة بين الزر وأيقونة القلب */
+
 }
 
 .btn-add:hover {
@@ -1078,49 +810,7 @@ body {
     color: #fff;
 }
 
-/* ===== Heart Icon ===== */
-.product-card .bi-heart {
-    font-size: 18px;
-    cursor: pointer;
-    transition: 0.3s;
-    /* إذا تريد، يمكن تقليل الهامش من القلب */
-    margin-left: 60px;
-    cursor: pointer;
-    transition: 0.3s;
-    color: #000;
-}
 
-.product-card .d-flex {
-    gap: 12px;
-}
-
-.product-card .bi-heart {
-    margin-left: 0;
-}
-
-/* Mobile */
-@media (max-width: 576px) {
-    .product-card img {
-        width: 130px;
-        height: 130px;
-    }
-}
-
-/* Tablet */
-@media (min-width: 577px) and (max-width: 991px) {
-    .product-card img {
-        width: 150px;
-        height: 150px;
-    }
-}
-
-/* Desktop */
-@media (min-width: 992px) {
-    .product-card img {
-        width: 180px;
-        height: 180px;
-    }
-}
 
 
 /* =======================
@@ -1195,7 +885,7 @@ body {
 
     .service2 .card {
         height: 250px;
-        /* أصغر على الموبايل */
+
     }
 
     .service2 .card-body h5 {
@@ -1454,7 +1144,7 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Switcher Button */
+
 #switchBtn {
     display: block;
     width: 100%;
@@ -1473,6 +1163,7 @@ body {
     background: #d4d4d4;
 }
 
+/* // */
 /* Card Title */
 .account-card h5 {
     text-align: center;
@@ -1556,11 +1247,10 @@ body {
 ===================== */
 .about2-section {
     padding-bottom: 60px;
-    /* أخف شوية */
+
 }
 
-/* =====================
-   Cards (General)
+
 /* =====================
    About Us Cards
 ===================== */
@@ -1629,12 +1319,11 @@ body {
 /* Two cards same size */
 .about2-stack .equal-card {
     height: 220px;
-    /* 👈 نفس ارتفاع الكارت الثاني */
+
 }
 
 .about2-vision .about2-card {
     height: 300px;
-    /* نفس ارتفاع stack cards */
 }
 
 .about2-vision .image-card {
@@ -1682,36 +1371,48 @@ body {
     color: #666;
 }
 
-/* =====================
-   Images overlapping (Partnership Section)
-===================== */
-.col-lg-6.position-relative {
-    overflow: visible;
-    /* لو الصور خارجة عن حدود العمود */
-}
-
-.screen-1 {
-    position: absolute;
+/* Training Programs */
+.training-screens .screen-1 {
+    width: 300px;
     bottom: 20px;
     left: 150px;
     z-index: 3;
-    width: 300px;
 }
 
-.screen-2 {
-    position: absolute;
+.training-screens .screen-2 {
+    width: 250px;
     bottom: 115px;
     left: 120px;
     z-index: 2;
-    width: 250px;
 }
 
-.screen-3 {
-    position: absolute;
+.training-screens .screen-3 {
+    width: 270px;
     bottom: 150px;
     left: 60px;
     z-index: 1;
-    width: 270px;
+}
+
+/* Partnership */
+.partnership-screens .screen-1 {
+    width: 280px;
+    bottom: 20px;
+    left: 130px;
+    z-index: 3;
+}
+
+.partnership-screens .screen-2 {
+    width: 240px;
+    bottom: 110px;
+    left: 110px;
+    z-index: 2;
+}
+
+.partnership-screens .screen-3 {
+    width: 260px;
+    bottom: 140px;
+    left: 50px;
+    z-index: 1;
 }
 
 /* =====================
@@ -1719,7 +1420,7 @@ body {
 ===================== */
 .about2-card.position-relative {
     position: relative;
-    /* مهم لاحتواء الزر داخل الكارد */
+
 }
 
 .demo-btn {
@@ -1731,6 +1432,7 @@ body {
     border-radius: 50px;
     font-weight: 600;
 }
+
 
 /* =====================
    Responsive
@@ -1799,7 +1501,7 @@ body {
     /* يجعل الأعمدة بنفس الارتفاع */
 }
 
-/* Text Card */
+
 .training2-card {
     background: #fff;
     padding: 30px 25px;
@@ -1809,27 +1511,27 @@ body {
     flex-direction: column;
     justify-content: center;
     flex: 1 1 auto;
-    /* يملأ العمود بالكامل */
+
 }
 
-/* العنوان */
+
 .training2-card h4 {
     font-weight: 700;
     font-size: 1.8rem;
     margin-bottom: 20px;
 }
 
-/* النص */
+
 .training2-card p {
     font-size: 1.08rem;
     line-height: 1.8;
     color: #555;
 }
 
-/* Image Card */
+
 .training2-card.image-card {
     padding: 0;
-    /* إزالة padding لتغطية الصورة بالكامل */
+
     overflow: hidden;
 }
 
@@ -1843,7 +1545,7 @@ body {
 
 .value-box p {
     font-size: 1.15rem;
-    /* حجم أكبر للنص */
+
     line-height: 1.7;
     color: #555;
 }
@@ -1885,7 +1587,7 @@ body {
 ===================== */
 .learn-more-section {
     padding: 120px 0 60px 0;
-    /* مسافة من الـ navbar */
+
 }
 
 /* الكارد العام */
@@ -1976,17 +1678,17 @@ body {
     background-color: #155fa0;
 }
 
-/* الكارد العام للصور */
+
 .learn-more-card {
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     height: 300px;
-    /* ارتفاع ثابت للصورة */
+
 }
 
-/* الصورة تغطي الكارد بالكامل */
+
 .image-card .img-cover {
     width: 100%;
     height: 100%;
@@ -1994,7 +1696,7 @@ body {
     display: block;
 }
 
-/* نصوص خارج الكارد */
+
 .learn-more-new-section h4 {
     font-size: 1.6rem;
     font-weight: 700;
@@ -2010,21 +1712,18 @@ body {
 
 .learn-more-new-section .first-image {
     height: 480px;
-    /* يمكنك تغييره */
+
 }
 
 .learn-more-new-section .second-image {
     max-width: 600px;
-    /* أقصى عرض للكارد */
     width: 100%;
-    /* العرض الافتراضي للعمود */
     height: 380px;
-    /* ارتفاع محدد */
     margin: 0 auto;
-    /* توسيط */
+
 }
 
-/* زر الاستفسار تحت النص */
+
 
 /* Responsive */
 @media (max-width: 992px) {
@@ -2044,6 +1743,7 @@ body {
    Shop Board Section
 ===================== */
 /* Shop Board Section */
+
 .shop-board-section {
     padding-top: 140px;
     padding-bottom: 100px;
@@ -2051,12 +1751,13 @@ body {
 
 /* Card */
 .shop-board-section .shop-card {
-    border: 0;   
+    border: 0;
     border-radius: 25px;
     transition: all 0.3s ease;
     background: #fff;
     display: flex;
-    flex-direction: column; /* default column for mobile */
+    flex-direction: column;
+    /* default column for mobile */
     align-items: center;
     gap: 1.5rem;
     padding: 20px;
@@ -2087,28 +1788,36 @@ body {
 /* Responsive */
 @media (min-width: 992px) {
     .shop-board-section .shop-card {
-        flex-direction: row; /* نص + صورة جنب بعض على ديسكتوب */
+        flex-direction: row;
+        /* نص + صورة جنب بعض على ديسكتوب */
         align-items: center;
     }
+
     .shop-board-section .image-wrapper {
-        width: 350px; /* حجم الصورة ثابت على الديسكتوب */
+        width: 350px;
+        /* حجم الصورة ثابت على الديسكتوب */
         margin-left: 30px;
     }
 }
 
 @media (max-width: 991px) {
     .shop-board-section .shop-card {
-        flex-direction: column; /* عمود على الموبايل */
+        flex-direction: column;
+        /* عمود على الموبايل */
         text-align: center;
         padding: 15px;
     }
+
     .shop-board-section .image-wrapper {
         width: 100%;
         margin-left: 0;
-        margin-bottom: 15px; /* مسافة بين الصورة والنص */
+        margin-bottom: 15px;
+        /* مسافة بين الصورة والنص */
     }
+
     .shop-board-section .img-cover {
-        height: 250px; /* أصغر للموبايل */
+        height: 250px;
+        /* أصغر للموبايل */
     }
 }
 
@@ -2179,7 +1888,8 @@ body {
 @media (max-width: 991px) {
 
     .big-card {
-        height: auto; /* 👈 مهم */
+        height: auto;
+        /* 👈 مهم */
         padding: 15px;
     }
 
@@ -2191,7 +1901,8 @@ body {
 
     /* كارت النص */
     .small-text-card {
-        position: relative;      /* 👈 إزالة absolute */
+        position: relative;
+        /* 👈 إزالة absolute */
         top: auto;
         left: auto;
         max-width: 100%;
@@ -2201,12 +1912,14 @@ body {
 
     /* الصورة الصغيرة */
     .small-image-card {
-        position: relative;      /* 👈 إزالة absolute */
+        position: relative;
+        /* 👈 إزالة absolute */
         bottom: auto;
         right: auto;
         width: 140px;
         height: 140px;
-        margin: 15px auto 0;     /* في المنتصف */
+        margin: 15px auto 0;
+        /* في المنتصف */
     }
 }
 
@@ -2237,9 +1950,7 @@ body {
     }
 }
 
-/* =====================
-   Full Width Card (Text Left, Image Right)
-===================== */
+
 /* =========================
    Full Width Section
 ========================= */
@@ -2614,57 +2325,6 @@ body {
     background: transparent;
 }
 
-/* =========================
-   Heart Button
-========================= */
-.heart-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: rgba(255, 255, 255, 0.7);
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 10;
-    padding: 0;
-    transition: all 0.3s ease;
-}
-
-.heart-btn:hover {
-    background: rgba(255, 255, 255, 1);
-    transform: scale(1.1);
-}
-
-.heart-btn i {
-    font-size: 20px;
-    color: #e10600;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.3s ease;
-}
-
-.heart-btn i.bi-heart-fill {
-    opacity: 0;
-}
-
-.heart-btn.active i.bi-heart-fill {
-    opacity: 1;
-}
-
-.heart-btn.active i.bi-heart {
-    opacity: 0;
-}
-
-.heart-btn:active {
-    transform: scale(0.95);
-}
 
 /* =========================
    Responsive
@@ -2688,7 +2348,8 @@ body {
     }
 
     .thumbs-card {
-        padding: 5px 10px; /* لا حاجة لفراغ جانبي كبير */
+        padding: 5px 10px;
+        /* لا حاجة لفراغ جانبي كبير */
         overflow-x: auto;
     }
 
@@ -2738,13 +2399,15 @@ body {
 
 .desktop-arrow {
     display: inline-flex;
-}  
+}
+
 /* // */
 
 
 /* ===== Contact Section Responsiveness ===== */
 .contact-section {
-    padding-top: 140px; /* يمكنك تعديله حسب حاجتك */
+    padding-top: 140px;
+    /* يمكنك تعديله حسب حاجتك */
     padding-bottom: 60px;
 }
 
@@ -2759,8 +2422,10 @@ body {
 .toggle-button {
     position: relative;
     display: inline-block;
-    width: 320px; /* العرض الافتراضي */
-    height: 50px; /* الارتفاع الافتراضي */
+    width: 320px;
+    /* العرض الافتراضي */
+    height: 50px;
+    /* الارتفاع الافتراضي */
 }
 
 /* إخفاء الـ checkbox */
@@ -2773,10 +2438,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ddd; /* لون الخلفية */
+    background-color: #ddd;
+    /* لون الخلفية */
     border-radius: 30px;
     cursor: pointer;
-    padding: 0 10px; /* المسافة الداخلية */
+    padding: 0 10px;
+    /* المسافة الداخلية */
     height: 100%;
     position: relative;
     transition: background-color 0.3s;
@@ -2788,10 +2455,14 @@ body {
     flex: 1;
     text-align: center;
     font-weight: bold;
-    line-height: 50px; /* مطابق لارتفاع الزر */
-    white-space: nowrap; /* يمنع النص من الانكسار */
-    overflow: hidden; /* يمنع خروج النص */
-    text-overflow: ellipsis; /* يضيف ... إذا طول النص أكبر */
+    line-height: 50px;
+    /* مطابق لارتفاع الزر */
+    white-space: nowrap;
+    /* يمنع النص من الانكسار */
+    overflow: hidden;
+    /* يمنع خروج النص */
+    text-overflow: ellipsis;
+    /* يضيف ... إذا طول النص أكبر */
     transition: font-size 0.3s, line-height 0.3s;
 }
 
@@ -2814,57 +2485,34 @@ body {
 }
 
 /* ===== Responsive Adjustments ===== */
-
+/* لأجهزة أقل من 992px (تابلت/شاشات متوسطة) */
 /* لأجهزة أقل من 992px */
-@media (max-width: 992px) {
-    .toggle-button {
-        width: 280px;
-        height: 45px;
-    }
-    .toggle-button label .left,
-    .toggle-button label .right {
-        line-height: 45px;
-        font-size: 0.95rem;
-    }
-    .toggle-button label::before {
-        height: 36px;
-        top: 4px;
-    }
+/* الحجم الافتراضي */
+.toggle-button.contact-toggle label {
+    width: 100%;
+    /* أو أي عرض تريده */
+    max-width: 300px;
+    /* عرض أقصى افتراضي */
 }
 
-/* لأجهزة أقل من 768px */
+/* لأجهزة أصغر من 768px */
 @media (max-width: 768px) {
-    .toggle-button {
-        width: 220px;
-        height: 40px;
-    }
-    .toggle-button label .left,
-    .toggle-button label .right {
-        line-height: 40px;
-        font-size: 0.85rem;
-    }
-    .toggle-button label::before {
-        height: 32px;
-        top: 4px;
+    .toggle-button.contact-toggle label {
+        width: 100%;
+        /* يجعلها تمتد بالكامل داخل الحاوية */
+        max-width: 350px;
+        /* أو أي قيمة أكبر تريدها */
     }
 }
 
-/* لأجهزة أقل من 576px */
+/* لأجهزة أصغر من 576px */
 @media (max-width: 576px) {
-    .toggle-button {
-        width: 180px;
-        height: 36px;
+    .toggle-button.contact-toggle label {
+        width: 100%;
+        max-width: 400px;
+        /* عرض أكبر للشاشات الصغيرة جداً */
     }
-    .toggle-button label .left,
-    .toggle-button label .right {
-        line-height: 36px;
-        font-size: 0.75rem;
-    }
-    .toggle-button label::before {
-        height: 30px;
-        top: 3px;
-    }
-} 
+}
 
 .whatsapp-float {
     position: fixed;
@@ -2877,7 +2525,7 @@ body {
     border-radius: 50%;
     text-align: center;
     font-size: 32px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 9999;
 
     display: flex;
@@ -2890,4 +2538,352 @@ body {
 .whatsapp-float:hover {
     transform: scale(1.1);
     background-color: #1ebe5d;
+}
+
+.thumb-img {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.thumb-img:hover,
+.thumb-img.active {
+    opacity: 1;
+    border: 2px solid #0d6efd;
+    border-radius: 6px;
+}
+
+.product-img {
+    width: 100%;
+    height: auto;
+    /* يحافظ على نسبة العرض/الارتفاع */
+    max-height: 250px;
+    /* الحد الأقصى للارتفاع */
+    object-fit: contain;
+    /* للحفاظ على شكل الصورة */
+}
+
+@media (max-width: 768px) {
+    .product-img {
+        max-height: 180px;
+        /* أقل على الموبايل */
+    }
+}
+
+/* للأجهزة أقل من 576px */
+@media (max-width: 576px) {
+    .btn-sm-sm {
+        font-size: 0.75rem;
+        /* حجم أصغر */
+        padding: 0.35rem 0.5rem;
+        /* padding أصغر */
+    }
+
+    .gap-2 {
+        gap: 0.3rem;
+        /* تقليل المسافة بين الزرار */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .collection-card {
+        flex-direction: column !important;
+        text-align: center;
+    }
+
+    .collection-card .image-section img {
+        width: 100% !important;
+        /* أعرض الصورة على كامل العرض */
+        height: auto !important;
+        /* ارتفاع متناسب */
+        max-width: 300px;
+        /* يمكن التحكم بالحد الأقصى */
+        margin: 0 auto;
+        /* توسيط الصورة */
+    }
+
+    .collection-card .text-section {
+        margin-bottom: 15px;
+        /* مسافة بين النص والصورة */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .collection-card {
+        flex-direction: column !important;
+        text-align: center;
+    }
+
+    .collection-card .image-section img {
+        width: 100% !important;
+        /* الصورة بعرض كامل */
+        height: auto !important;
+        /* ارتفاع متناسب */
+        max-width: 550px;
+        /* زدنا الحجم */
+        margin: 0 auto;
+        /* توسيط الصورة */
+    }
+
+    .collection-card .text-section {
+        margin-bottom: 15px;
+        /* مسافة بين النص والصورة */
+    }
+}
+
+/* CSS */
+.main-address {
+    color: #dc3545;
+    /* أحمر Bootstrap danger color */
+    font-size: 1.6rem;
+    /* حجم أكبر للنص */
+    font-weight: 700;
+    /* عريض */
+    letter-spacing: 1px;
+    /* مسافة بسيطة بين الحروف */
+}
+
+/* ========================= */
+/* CARD */
+/* ========================= */
+
+.collection-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+    border-radius: 16px;
+    background: #f8f9fa;
+    min-height: 280px;
+    width: 100%;
+    overflow: hidden;
+    gap: 40px;
+}
+
+/* ========================= */
+/* TEXT */
+/* ========================= */
+
+.collection-content {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* يبدأ من أول الكارد */
+    text-align: start;
+}
+
+/* ========================= */
+/* IMAGES */
+/* ========================= */
+
+.collection-images {
+    width: 45%;
+    height: 230px;
+    position: relative;
+    margin-inline-start: auto;
+    /* RTL / LTR */
+}
+
+/* images */
+.collection-img {
+    position: absolute;
+    width: 150px;
+    object-fit: contain;
+    transition: 0.4s ease;
+}
+
+.img-1 {
+    top: 0;
+    inset-inline-start: 0;
+    z-index: 1;
+}
+
+.img-2 {
+    top: 35px;
+    inset-inline-start: 55px;
+    z-index: 2;
+}
+
+.img-3 {
+    top: 70px;
+    inset-inline-start: 100px;
+    z-index: 3;
+}
+
+/* hover */
+.collection-card:hover .img-1 {
+    transform: translateY(-8px);
+}
+
+.collection-card:hover .img-2 {
+    transform: translateY(-12px);
+}
+
+.collection-card:hover .img-3 {
+    transform: translateY(-16px);
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+/* Tablet large: 991px */
+@media (max-width: 991px) {
+    .row.g-4 > .col-12.col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .collection-card {
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: auto;
+    }
+
+    .collection-content {
+        width: 100%;
+    }
+
+    .collection-images {
+        width: 100%;
+        height: 220px;
+        margin-inline-start: 0;
+        margin-top: 20px;
+        position: relative;
+    }
+
+    .collection-img { width: 120px; }
+    .img-1 { top: 0; inset-inline-start: 0; z-index: 1; }
+    .img-2 { top: 25px; inset-inline-start: 45px; z-index: 2; }
+    .img-3 { top: 50px; inset-inline-start: 90px; z-index: 3; }
+}
+
+/* Tablet small / iPad Mini: 768px */
+@media (max-width: 768px) {
+    /* نخلي الكارتين ياخدوا كل عرض السطر */
+    .row.g-4 > .col-12.col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .collection-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .collection-images {
+        width: 100%;
+        height: 180px; /* أصغر شوي */
+        margin-inline-start: 0;
+        margin-top: 15px;
+    }
+
+    .collection-img { width: 100px; }
+    .img-1 { top: 0; inset-inline-start: 0; }
+    .img-2 { top: 20px; inset-inline-start: 35px; }
+    .img-3 { top: 40px; inset-inline-start: 70px; }
+}
+
+
+
+
+
+/* الكارت */
+.feature-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    border-radius: 16px;
+    background: #f8f9fa;
+    min-height: 280px;
+    gap: 50px;
+    overflow: hidden;
+}
+
+/* النص */
+.feature-content {
+    flex-shrink: 0;
+}
+
+/* الصور */
+.feature-images {
+    width: 40%;
+    height: 220px;
+    position: relative;
+    margin-inline-start: 80px;
+    transform-origin: center;
+}
+
+/* الصور */
+.feature-image {
+    position: absolute;
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+    transition: 0.4s ease;
+}
+
+/* ترتيب الصور */
+.feature-img-1 {
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.feature-img-2 {
+    top: 65px;
+    left: 60px;
+    z-index: 2;
+}
+
+.feature-img-3 {
+    top: 100px;
+    left: 120px;
+    z-index: 3;
+}
+
+/* ========================= */
+/* ✅ RESPONSIVE MAGIC */
+/* ========================= */
+
+@media (max-width: 1200px) {
+    .feature-images {
+        transform: scale(0.95);
+    }
+}
+
+@media (max-width: 992px) {
+    .feature-images {
+        transform: scale(1);
+        margin-inline-start: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .feature-images {
+        width: 100%;
+        margin-inline-start: 0;
+        transform: scale(1);
+        /* 👈 أصغر سنة */
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-images {
+        transform: scale(1);
+        /* 👈 بدل 1.25 */
+    }
+}
+
+.text-section {
+    text-align: start;
+    /* ذكي: left في LTR و right في RTL */
 }

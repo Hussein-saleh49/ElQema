@@ -1,4 +1,5 @@
 @extends("front.master")
+@section("title",__("keywords.education"))
 @section("content")
 <section class="big-card-section py-5">
     <div class="container">
@@ -39,7 +40,7 @@
                     {{ __('theme.educators_choice_text') }}
                 </p>
                 <div class="d-flex gap-2 mt-3">
-                    <a href="#" class="btn btn-primary btn-sm">{{ __('theme.view_details') }}</a>
+                    <a href="{{ route("front.learn") }}" class="btn btn-primary btn-sm">{{ __('theme.view_details') }}</a>
                 </div>
             </div>
 

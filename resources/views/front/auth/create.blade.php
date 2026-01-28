@@ -27,16 +27,7 @@
                     @endphp
 
                     <!-- Toggle Button -->
-                    <div class="text-center mb-4">
-                        <div class="toggle-button contact-toggle" dir="ltr">
-                            <input type="checkbox" id="toggleBtn">
-
-                            <label for="toggleBtn" class="d-flex justify-content-between">
-                                <span class="fw-bolder fs-6">{{ __('theme.individual_user') }}</span>
-                                <span class="fw-bolder fs-6">{{ __('theme.company_school') }}</span>
-                            </label>
-                        </div>
-                    </div>
+                    <x-toggle-button></x-toggle-button>
 
                     <!-- Individual User Form -->
                     <div id="individualForm" style="display: {{ $oldType == 'individual' ? 'block' : 'none' }};">
@@ -75,7 +66,7 @@
                             <div class="mb-3">
                                 <label class="form-label">{{ __('theme.password') }}</label>
                                 <input type="password" name="password" class="form-control"
-                                    placeholder="{{ __('theme.enter_password') }}">
+                                    placeholder="{{ __('theme.password') }}">
                             </div>
 
                             <div class="mb-3">

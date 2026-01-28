@@ -1,7 +1,14 @@
 @extends('front.master')
+@section('title', __('keywords.product_details'))
 @section('content')
     <!-- Product Images & Content Section -->
     <section class="product-images-section">
+        @if (session('success'))
+            <div class="alert alert-success text-center">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <div class="container">
             <div class="row align-items-start g-4">
 
@@ -17,8 +24,9 @@
                             </button>
 
                             <div class="thumbs-card">
-                                @forelse ($product->images as $thumb)w
+                                @forelse ($product->images as $thumb)
                                     <img src="{{ asset('storage/products/' . $thumb->image) }}"
+                                        data-image="{{ asset('storage/products/' . $thumb->image) }}"
                                         alt="Thumb {{ $loop->iteration }}" class="thumb-img">
                                 @empty
                                     <p class="text-muted">No thumbnails available</p>
@@ -34,13 +42,11 @@
 
                         <!-- Main Image -->
                         <div class="main-image-card bg-white rounded-3 overflow-hidden w-100 position-relative">
-                            <img src="{{ asset('storage/products/' . $product->image) }}" class="main-img rounded-3"
-                                alt="{{ $product->name }}">
+                            <img src="{{ asset('storage/products/' . $product->image) }}" class="main-img rounded-3"     
+                                id="mainProductImage" alt="{{ $product->name }}">
 
-                            <button class="heart-btn">
-                                <i class="bi bi-heart"></i>
-                                <i class="bi bi-heart-fill"></i>
-                            </button>
+
+                            
                         </div>
 
                     </div>
@@ -66,7 +72,10 @@
                     @if (!$product->is_active)
                         <button class="btn out-stock-btn mt-2" disabled>{{ __('theme.out_of_stock') }}</button>
                     @else
-                        <button class="btn btn-primary mt-2">{{ __('theme.add_to_cart') }}</button>
+                        <form action="{{ route('front.cart.add', $product) }}" method="POST">
+                            @csrf
+                            <button class="btn btn-primary mt-2">{{ __('theme.add_to_cart') }}</button>
+                        </form>
                     @endif
                     <div class="column-end-desc mt-auto">
                         <h5 class="desc-title">{{ __('theme.view_details') }}</h5>
@@ -125,7 +134,9 @@
             </div>
 
             <div class="d-flex justify-content-center mt-4">
-                <button class="btn out-stock-btn" disabled>{{ __('theme.add_to_cart') }}</button>
+                  @if (!$product->is_active)
+                <button class="btn out-stock-btn" disabled>{{ __("theme.out_of_stock") }}</button>
+                @endif
             </div>
         </div>
     </section>

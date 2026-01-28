@@ -5,7 +5,7 @@
     <nav class="vertnav navbar navbar-light">
         <!-- Brand -->
         <div class="w-100 mb-4 d-flex">
-            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="#">
+            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="{{ route("admin.index") }}">
                 <svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120"
                     xml:space="preserve">
@@ -41,6 +41,9 @@
             </x-sidebar-tab>
             <x-sidebar-tab href="{{ route('admin.trainees.index') }}" icon="bi bi-mortarboard"
                 title="{{ __('keywords.trainees') }}">
+            </x-sidebar-tab>
+            <x-sidebar-tab href="{{ route('admin.settings.index') }}" icon="bi bi-gear-fill"
+                title="{{ __('keywords.settings') }}">
             </x-sidebar-tab>
 
 

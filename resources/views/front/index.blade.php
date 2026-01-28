@@ -8,7 +8,8 @@
             <div class="col-lg-6">
                 <h1 class="fw-bold mb-3 hero-text-animate">{{ __('theme.hero_title') }}</h1>
                 <p class="text-muted hero-text-animate">{{ __('theme.hero_text') }}</p>
-                <button class="btn btn-primary mt-3 hero-text-animate">{{ __('theme.hero_btn') }}</button>
+                <a class="btn btn-primary mt-3 hero-text-animate"
+                    href="{{ route('front.request') }}">{{ __('theme.hero_btn') }}</a>
             </div>
             <div class="col-lg-6 text-center" data-aos="zoom-out" data-aos-duration="1200">
                 <img src="{{ asset('assets/images/hero.png') }}" class="img-fluid rounded-4 hero-img hero-img-animate"
@@ -18,55 +19,49 @@
     </section>
 
     <!-- Featured Products -->
-<section class="container mb-5" data-aos="fade-up">
-    <h2 class="section-title text-center">{{ __('theme.featured_products') }}</h2>
+    <section class="container mb-5" data-aos="fade-up">
+        <h2 class="section-title text-center">{{ __('theme.featured_products') }}</h2>
 
-    <div class="row g-4">
-        @forelse ($products as $product)
-            <div class="col-6 col-md-4">
-                <div class="service-card-horizontal card-color-1 d-flex flex-column flex-lg-row align-items-center shadow-sm rounded p-2">
-                    
-                    <!-- Text -->
-                    <div class="service-text-card flex-fill p-2">
-                        <h5>{{ $product->name }}</h5>
-                        <p class="text-muted mb-2">
-                            {{ $product->description}}
-                        </p>
-                        <a href="{{ route('front.productDetails', $product) }}" class="btn btn-primary btn-sm">
-                            {{ __('theme.learn_more') }}
-                        </a>
+        <div class="row g-4">
+            @forelse ($products as $product)
+                <div class="col-6 col-md-4">
+                    <div
+                        class="service-card-horizontal card-color-1 d-flex flex-column flex-lg-row align-items-center shadow-sm rounded p-2">
 
-                        <ul class="small text-muted ps-3 mt-2 mb-0">
-                            @forelse ($product->product_features ?? [] as $feature)
-                                <li>{{ $feature }}</li>
-                            @empty
-                                <li class="text-muted">{{ __('theme.no_features') }}</li>
-                            @endforelse
-                        </ul>
+                        <!-- Text -->
+                        <div class="service-text-card flex-fill p-2">
+                            <h5>{{ $product->name }}</h5>
+                            <p class="text-muted mb-2">
+                                {{ $product->description }}
+                            </p>
+                            <a href="{{ route('front.productDetails', $product) }}" class="btn btn-primary btn-sm">
+                                {{ __('theme.learn_more') }}
+                            </a>
+
+
+                        </div>
+
+                        <!-- Image -->
+                        <div class="service-img-card flex-shrink-0 mt-2 mt-lg-0" style="width: 150px; height: 120px;">
+                            <img src="{{ asset('storage/products/' . $product->image) }}"
+                                class="img-fluid rounded w-100 h-100" style="object-fit: cover;"
+                                alt="{{ $product->name }}">
+                        </div>
+
                     </div>
-
-                    <!-- Image -->
-                    <div class="service-img-card flex-shrink-0 mt-2 mt-lg-0" style="width: 150px; height: 120px;">
-                        <img src="{{ asset('storage/products/' . $product->image) }}" 
-                             class="img-fluid rounded w-100 h-100" 
-                             style="object-fit: cover;" 
-                             alt="{{ $product->name }}">
-                    </div>
-
                 </div>
-            </div>
-        @empty
-            <div class="col-12 text-center text-danger">
-                {{ __('keywords.no_products_yet') }}
-            </div>
-        @endforelse
-    </div>
+            @empty
+                <div class="col-12 text-center text-danger">
+                    {{ __('keywords.no_products_yet') }}
+                </div>
+            @endforelse
+        </div>
 
-    <!-- Pagination -->
-    <div class="mt-3 d-flex justify-content-center">
-        {{ $products->links() }}
-    </div>
-</section>
+        <!-- Pagination -->
+        <div class="mt-3 d-flex justify-content-center">
+            {{ $products->links() }}
+        </div>
+    </section>
 
     <!-- About Section -->
     <section id="about" class="about-section py-5">
@@ -108,19 +103,26 @@
                     </div>
 
                     <div class="cta-buttons mt-4">
-                        <a href="#" class="btn btn-primary me-2">{{ __('theme.request_demo') }}</a>
+                        <a href="{{ route('front.request') }}"
+                            class="btn btn-primary me-2">{{ __('theme.request_demo') }}</a>
                     </div>
                 </div>
 
                 <div class="col-lg-6 order-lg-2 text-center" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="{{ asset('assets/images/Frame 29.png') }}" class="img-fluid rounded-4 about-img"
-                        alt="">
+
+                    <a href="{{ route('front.about') }}">
+                        <img src="{{ asset('assets/images/Frame 29.png') }}" class="img-fluid rounded-4 about-img"
+                            alt="">
+                    </a>
+
                     <div class="experience-box position-absolute top-0 start-0 bg-primary text-white p-3 rounded-3 shadow"
                         data-aos="zoom-in" data-aos-delay="300">
                         <div class="years fs-3 fw-bold">15+</div>
                         <div class="text">{{ __('theme.years_experience') }}</div>
                     </div>
+
                 </div>
+
 
             </div>
         </div>
@@ -184,7 +186,7 @@
         <div class="container">
             <div class="row align-items-center">
 
-                <div class="col-lg-6 position-relative text-center mt-1" style="height: 400px;">
+                <div class="col-lg-6 position-relative text-center mt-1 training-screens" style="height: 400px;">
                     <img src="{{ asset('assets/images/training1.png') }}" class="screen-1 position-absolute"
                         alt="">
                     <img src="{{ asset('assets/images/training2.png') }}" class="screen-2 position-absolute"
@@ -219,7 +221,8 @@
                         </div>
                     </div>
 
-                    <a href="#" class="btn btn-primary btn-sm px-4">{{ __('theme.learn_more') }}</a>
+                    <a href="{{ route('front.training') }}"
+                        class="btn btn-primary btn-sm px-4">{{ __('theme.learn_more') }}</a>
                 </div>
 
             </div>

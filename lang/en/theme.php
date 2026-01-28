@@ -445,5 +445,10 @@ return [
     'confirm_new_password'         => 'Confirm new password',
 
     'reset_password_button'        => 'Reset Password',
-
+    "apply_filter"                 => "apply filter",
+    "About Us"                     => "About Us",
+    "cart"                         => "Cart",
+    "Pay Now" => "Pay Now",
+    "subtotal" => "Subtotal",
+    "similar_products" => "Similar Products",
 ];

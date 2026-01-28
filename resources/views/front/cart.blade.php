@@ -1,6 +1,6 @@
 @extends('front.master')
 
-@section('title', __('Cart'))
+@section('title', __("theme.cart"))
 @section('content')
 <div class="container my-5">
 
@@ -20,11 +20,11 @@
                 <thead class="table-dark">
                     <tr>
                         <th>#</th>
-                        <th>{{ __('Product') }}</th>
-                        <th>{{ __('Price') }}</th>
-                        <th>{{ __('Quantity') }}</th>
-                        <th>{{ __('Subtotal') }}</th>
-                        <th>{{ __('Actions') }}</th>
+                        <th>{{ __("keywords.products") }}</th>
+                        <th>{{ __("keywords.price") }}</th>
+                        <th>{{ __("theme.quantity") }}</th>
+                        <th>{{ __("theme.subtotal") }}</th>
+                        <th>{{ __("keywords.actions") }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,20 +34,20 @@
                             <td>{{ $item->product->name }}</td>
                             <td>${{ number_format($item->product->price, 2) }}</td>
                             <td>
-                                <form action="{{ route("front.cart.updateQuantity", $item->id) }}" method="POST" class="d-flex justify-content-center align-items-center">
+                                <form action="{{ route('front.cart.updateQuantity', $item->id) }}" method="POST" class="d-flex justify-content-center align-items-center">
                                     @csrf
                                     @method('PATCH')
                                     <input type="number" name="quantity" value="{{ $item->quantity }}" min="1" class="form-control w-50 me-2">
-                                    <button class="btn btn-sm btn-primary">{{ __('Update') }}</button>
+                                    <button class="btn btn-sm btn-primary">{{ __("keywords.update") }}</button>
                                 </form>
                             </td>
                             <td>${{ number_format($item->product->price * $item->quantity, 2) }}</td>
                             <td>
-                                <form action="{{ route("front.cart.remove", $item->id) }}" method="POST">
+                                <form action="{{ route('front.cart.remove', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('{{ __('Are you sure?') }}')">
-                                        {{ __('Remove') }}
+                                        {{ __("keywords.remove") }}
                                     </button>
                                 </form>
                             </td>
@@ -56,10 +56,24 @@
                 </tbody>
             </table>
 
+            {{-- Total and Stripe Payment --}}
             <div class="text-end mt-3">
-                <h4>{{ __('Total') }}: ${{ number_format($cartItems->sum(fn($i) => $i->product->price * $i->quantity), 2) }}</h4>
-                {{-- <a href="{{ route('checkout') }}" class="btn btn-success btn-lg mt-2">{{ __('Proceed to Checkout') }}</a> --}}
+                @php
+                    $totalAmount = $cartItems->sum(fn($i) => $i->product->price * $i->quantity);
+                @endphp
+
+                <h4>{{ __('Total') }}: ${{ number_format($totalAmount, 2) }}</h4>
+
+                {{-- Stripe Checkout Form --}}
+                <form action="{{ route("front.pay") }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="amount" value="{{ $totalAmount }}">
+                    <button class="btn btn-success btn-lg mt-2">
+                        {{ __('theme.Pay Now') }}
+                    </button>
+                </form>
             </div>
+
         </div>
     @else
         <div class="alert alert-info text-center">

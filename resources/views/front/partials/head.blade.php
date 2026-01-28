@@ -13,6 +13,9 @@
     <link href="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.css" rel="stylesheet">
 
     <!-- Custom CSS -->
+    <link rel="icon" type="image/png" href="{{ asset("assets/images/favicon.png") }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
-</head>.
+@livewireStyles
+
+</head>
